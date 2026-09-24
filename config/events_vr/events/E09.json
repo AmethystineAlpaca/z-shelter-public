@@ -1,0 +1,63 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E09",
+  "title": "想借住一晚的人",
+  "summary": "敲门的人把双手举到你能看见的地方。他满身尘土，声音嘶哑，只求在屋里躲过这一夜；如果放他进来，你得腾出睡位、准备一份食物，并且家中要有备用水。",
+  "tags": [
+    "shelter",
+    "early",
+    "neutral"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "host",
+      "label": "留宿一晚",
+      "description": "腾一张床，留一份食物，家里需备有备用水。他只借住一晚。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "start_stay",
+          "params": {
+            "npc": "guest",
+            "days": 1
+          }
+        }
+      ],
+      "result_text": "你让开门口，指给他一处睡位，又留出一份食物。他放下行李，反复说只借这一晚。听着屋里多出来的呼吸声，你一时还不太习惯。"
+    },
+    {
+      "id": "supplies",
+      "label": "给一份食物帮他整顿",
+      "description": "送出一份口粮，让他继续赶路。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "guest",
+          "resource_id": "food_preserved",
+          "amount": 1
+        }
+      ],
+      "result_text": "你递给他一份食物。他整理好衣领，轻声道谢，继续往街口走。"
+    },
+    {
+      "id": "leave",
+      "label": "婉拒",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你隔着门拒绝了他。他没有再敲，只在门外停了一阵。脚步声渐渐远去，你靠着门，等到外面彻底安静下来。"
+    }
+  ]
+}

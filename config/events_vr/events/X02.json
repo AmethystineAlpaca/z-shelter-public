@@ -1,0 +1,68 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "X02",
+  "title": "它闯进来了",
+  "summary": "门板轰然倒下，门外那个游荡者踩着碎木挤进了玄关。它离你只剩几步，身后的入口已经彻底敞开。",
+  "tags": [
+    "shelter",
+    "cross",
+    "negative"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "X01",
+      "choice_id": "take_weapon"
+    }
+  },
+  "choices": [
+    {
+      "id": "shoot",
+      "label": "开枪解决闯入者",
+      "description": "消耗一发弹药。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "shoot",
+          "params": {}
+        }
+      ],
+      "result_text": "枪声在玄关里炸开。闯入者倒下后，屋里只剩被撞坏的门和刺鼻的火药味。"
+    },
+    {
+      "id": "escape",
+      "label": "从后门撤离",
+      "description": "放弃正面冲突，从清理过的后门离开。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "escape",
+          "params": {}
+        }
+      ],
+      "result_text": "你从后门绕出屋子，直到撞击声完全远去才折返回来。"
+    },
+    {
+      "id": "fight_barehand",
+      "label": "徒手硬抗",
+      "description": "没有武器也没有退路。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "player",
+          "field": "alive",
+          "value": false
+        }
+      ],
+      "result_text": "狭窄的玄关里没有留下转身的空间。屋子最终安静下来，再也没有人应声。"
+    }
+  ]
+}

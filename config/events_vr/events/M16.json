@@ -1,0 +1,54 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M16",
+  "title": "陈工带来的金属余料",
+  "summary": "陈工在门边打开自己的材料包，问你愿不愿意用一份口粮换两份金属余料。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "M06",
+      "choice_id": "host"
+    }
+  },
+  "choices": [
+    {
+      "id": "trade",
+      "label": "食物 1 换金属 2",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "chen",
+          "resource_id": "food_preserved",
+          "amount": 1
+        },
+        {
+          "type": "resource.transfer",
+          "from": "chen",
+          "to": "home",
+          "resource_id": "metal",
+          "amount": 2
+        }
+      ],
+      "result_text": "一份口粮换来两份金属余料。陈工替你把尖角包好，说修接头时能用上。你把它们收进自己的材料堆。"
+    },
+    {
+      "id": "leave",
+      "label": "保留口粮",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说口粮还得省着用。陈工点点头，把余料收回包里。这笔交换先不做，饭还是得留够。"
+    }
+  ]
+}

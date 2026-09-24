@@ -1,0 +1,66 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L01",
+  "title": "街坊想把这里重新连起来",
+  "summary": "林禾拿来一张草图，想在住宅旁搭个公共储物点。他说上回多亏你帮忙，这次才敢再来商量：有了地方放口粮，街坊也好轮流守一守路口。",
+  "tags": [
+    "shelter",
+    "late",
+    "positive"
+  ],
+  "trigger": {
+    "any": [
+      {
+        "selected": {
+          "event_id": "E01",
+          "choice_id": "gift"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E01",
+          "choice_id": "exchange"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "X05",
+          "choice_id": "fulfill_promise"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E11",
+          "choice_id": "plan_neighbor_repair"
+        }
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "build_hub",
+      "label": "用六份木料建设公共仓点",
+      "description": "仓点建好后可以商量出粮支持街口警戒；用完公共口粮后才会请求补充。",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "wood", "amount": 6}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_warehouse"
+        }
+      ],
+      "result_text": "你和街坊把六份木料搭成了公共仓点。林禾试了试门，说接下来该商量怎样出粮、轮流守住路口。粮箱还空着，轮值也得再谈。"
+    },
+    {
+      "id": "leave",
+      "label": "暂不参加",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说自家的木料还不宽裕，暂时参加不了。林禾把草图折好，没有再劝。街口的空地仍旧空着，各家还得先顾各家。"
+    }
+  ]
+}

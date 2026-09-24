@@ -1,0 +1,66 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L02",
+  "title": "社区需要什么样的规矩",
+  "summary": "公共仓点搭好了，林禾把空粮箱往里推了推。愿意守路口的人得有饭吃，他想先凑两份口粮，让街坊遇到成群来袭时能互相接应。",
+  "tags": [
+    "shelter",
+    "late",
+    "neutral"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "L01",
+      "choice_id": "build_hub"
+    }
+  },
+  "choices": [
+    {
+      "id": "loose",
+      "label": "不设固定警戒，保留口粮",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "community",
+          "field": "policy",
+          "value": "loose"
+        }
+      ],
+      "result_text": "你说先不安排固定轮值。林禾合上空粮箱，和众人散了。仓点还在，但下次要守住门口，得先靠自家的防护。"
+    },
+    {
+      "id": "rota",
+      "label": "投入两份口粮，安排街口警戒",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "community",
+          "resource_id": "food_preserved",
+          "amount": 2
+        },
+        {
+          "type": "state.set",
+          "target": "community",
+          "field": "policy",
+          "value": "rota"
+        },
+        {
+          "type": "state.set",
+          "target": "community",
+          "field": "shortage",
+          "value": false
+        }
+      ],
+      "result_text": "你把两份口粮放进箱子，林禾叫来愿意轮值的街坊。下次一起来挡来袭的人或尸群时，他们就能搭把手；这点粮只够撑两次。"
+    }
+  ]
+}

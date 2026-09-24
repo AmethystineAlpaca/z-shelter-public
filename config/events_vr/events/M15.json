@@ -1,0 +1,64 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M15",
+  "title": "陷阱用过一次之后",
+  "summary": "你检查上次挡过来袭的陷阱。绳索已经松脱，卡扣歪在一边，再有东西经过，也不会弹起来了。",
+  "tags": [
+    "shelter",
+    "middle",
+    "neutral"
+  ],
+  "trigger": {
+    "all": [
+      {
+        "selected": {
+          "event_id": "X01",
+          "choice_id": "brace"
+        }
+      },
+      {
+        "any": [
+          {
+            "selected": {
+              "event_id": "E06",
+              "choice_id": "plan_build_trap"
+            }
+          },
+          {
+            "selected": {
+              "event_id": "M07",
+              "choice_id": "plan_build_trap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "plan_trap_reset",
+      "label": "复位陷阱",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "tool_basic", "amount": 1}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "trap_reset"
+        }
+      ],
+      "result_text": "你用基础工具扣好卡扣，重新拉紧绳索，避开踏板试了一遍。陷阱又能挡住一次来袭了，工具收回原处。"
+    },
+    {
+      "id": "leave",
+      "label": "暂时停用",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你把松开的绳索拢到一边，免得自己绊倒。陷阱暂时不能用了，下次来袭得靠别的防护。"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M12",
+  "title": "园艺店里还留着种子",
+  "summary": "园艺店的货架倒了大半，角落里还留着封口完好的种子袋。你挑出两份，里面的种子没有受潮。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "seeds",
+      "label": "带回两份快速土豆种子",
+      "description": "带回两份快速土豆种子，回家后可在花园播种。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "garden_shop",
+          "to": "trip_cargo",
+          "resource_id": "seed",
+          "amount": 2
+        }
+      ],
+      "result_text": "你带回两份快速土豆种子。回家后可在空置花园播种；每份种子三天后自动收获两份食物。"
+    },
+    {
+      "id": "leave",
+      "label": "放过这次机会",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你放下种子袋，没再添行李。种菜的打算先放一放，眼下先顾好已经带上的东西。"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "food_preserved": {
+    "shop_category": "食物与应急",
+    "description": "开袋就能吃的日常口粮。",
+    "use_description": "直接吃可恢复 35 饱食度；也用于接待、交换、警戒储粮和勒索交付。",
+    "source_description": "准备商店、便利店与民居搜刮、周岚交换、林禾回礼。 快速土豆种植收成。"
+  },
+  "food_fresh": {
+    "shop_hidden": true,
+    "description": "住宅搜刮取得，不在准备期出售。",
+    "use_description": "直接吃可恢复 35 饱食度。",
+    "source_description": "民居搜刮；不在准备商店出售。"
+  },
+  "water_clean": {
+    "shop_category": "食物与应急",
+    "description": "一份留作应急的清洁用水。",
+    "use_description": "停水期间每天消耗 1 份。耗尽后连续三天未恢复供水或补充备用水，会因缺水死亡。",
+    "source_description": "准备商店或便利店搜刮。"
+  },
+  "wood": {
+    "shop_category": "建材与种植",
+    "description": "修缮和搭建用的木料。",
+    "use_description": "修门窗；10 份可换林禾铲子，3 份建陷阱、6 份建屏障或仓点、10 份建客房。",
+    "source_description": "准备商店、便利店／五金店／建材场搜刮、周岚交换。"
+  },
+  "brick": {
+    "shop_category": "建材与种植",
+    "description": "结实的普通砖块。",
+    "use_description": "4 份砖块配合施工工具修通建材场小路；也能修补或加固门窗。",
+    "source_description": "准备商店、五金店搜刮；修路后还可去建材场。"
+  },
+  "metal": {
+    "shop_category": "建材与种植",
+    "description": "用于结构连接的金属材料。",
+    "use_description": "修水管或发电机卡扣各用 1 份；院门用 6 份，也能修补和加固门窗。",
+    "source_description": "准备商店、五金店／维修站／电器仓／建材场搜刮、陈工交换。"
+  },
+  "gasoline": {
+    "shop_category": "电器与燃料",
+    "description": "需要用燃油桶存放的汽油。",
+    "use_description": "勒索交付需要 2 升汽油和 4 份耐储食品；须用油桶存放，不用于驾驶或日常发电。",
+    "source_description": "开局准备商店、便利店低概率搜刮或周岚交换。"
+  },
+  "bandage": {
+    "shop_category": "医疗用品",
+    "description": "用于包扎普通伤口的绷带。",
+    "use_description": "1 份包扎普通浅伤，解除受伤限制。不需要医生或技能。",
+    "source_description": "准备商店、诊所或便利店搜刮。"
+  },
+  "seed": {
+    "shop_category": "建材与种植",
+    "description": "农业公司的畅销产品，三天就能种出成熟的土豆。",
+    "use_description": "在空置花园播种时消耗 1 份；三天后自动收获 2 份耐储食品。",
+    "source_description": "准备商店、园艺店或便利店搜刮。"
+  },
+  "tool_basic": {
+    "shop_category": "工具与维修",
+    "description": "一套日常手工工具。",
+    "use_description": "修水管、修发电机卡扣、帮助林禾和复位陷阱；这些用途共用一套，不消耗工具。",
+    "source_description": "开局已持有 1 套；准备商店或维修站低概率搜刮可补充。"
+  },
+  "crowbar": {
+    "shop_category": "工具与维修",
+    "description": "便于撬开锁柜的结实撬棍。",
+    "use_description": "撬开民居上锁的枪柜，取出枪和弹药；撬棍不消耗。",
+    "story_hint": "能打开民居的枪柜，获得有限的枪与弹药。",
+    "source_description": "准备商店、五金店后间或现场取货。"
+  },
+  "shovel": {
+    "shop_category": "工具与维修",
+    "description": "挖土、清沟用的铲子。",
+    "use_description": "疏通排水，防止暴雨堵后门和泡坏口粮；一把即可反复使用。",
+    "source_description": "准备商店、林禾木料委托、阿岑交换、五金店／园艺店／维修站现场库存。"
+  },
+  "tool_construction": {
+    "shop_category": "工具与维修",
+    "description": "适合较大工程的施工工具。",
+    "use_description": "配合 4 份砖块修通建材场小路；工具保留。",
+    "source_description": "准备商店、陈工五天食宿报酬或五金店现场库存。"
+  },
+  "fuel_container": {
+    "shop_category": "电器与燃料",
+    "description": "可重复使用的 6 升燃油桶。",
+    "use_description": "每只油桶可装 6 升汽油，供采购、交换和勒索交付使用；桶本身不消耗。",
+    "source_description": "开局准备商店或维修站低概率搜刮。"
+  },
+  "cart": {
+    "shop_category": "工具与维修",
+    "description": "搬运大批物资的手推车。",
+    "use_description": "自动把外出负载上限从 12 提高到 40；搬发电机需要它，不用手动装备。",
+    "source_description": "准备商店或便利店门口的手推车事件。"
+  },
+  "generator": {
+    "shop_category": "电器与燃料",
+    "description": "可随时启用的备用发电设备。",
+    "use_description": "启用后恢复住宅供电、支持监控。负载 30、占 1 个大件位；当前不逐日耗油。",
+    "source_description": "准备商店、电器仓大件事件或现场取货。"
+  },
+  "camera_kit": {
+    "shop_category": "电器与燃料",
+    "description": "用于观察住宅周边的监控套件。",
+    "use_description": "启用且住宅有电后，可发现并接应被堵在门外的周岚；负载 8。",
+    "source_description": "准备商店、电器仓大件事件或现场取货。"
+  },
+  "firearm": {
+    "shop_hidden": true,
+    "description": "枪械，属于民居锁柜中的有限物资。",
+    "source_description": "仅民居锁柜：需要撬棍开启；不在准备商店出售。",
+    "use_description": "事件来袭时从家中取到手里，配合弹药清除强度 1 的威胁；不能单枪清除尸群。"
+  },
+  "ammo": {
+    "shop_hidden": true,
+    "description": "适配弹药，属于民居锁柜中的有限物资。",
+    "source_description": "仅民居锁柜，初始共 6 发；不在准备商店出售、不自动补货。",
+    "use_description": "每次射击消耗 1 发，必须已拿枪且威胁强度不超过 1。"
+  }
+}

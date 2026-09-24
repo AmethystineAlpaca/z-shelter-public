@@ -1,0 +1,56 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E10",
+  "title": "排水沟里的坏消息",
+  "summary": "街坊带来消息：三天后有一场暴雨。你蹲在院边看了看，排水沟已经塞满枝叶，后门窄道比院子还低，屋里的低架也靠地面太近。",
+  "tags": [
+    "shelter",
+    "early",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "plan_drain",
+      "label": "疏通排水",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "shovel", "amount": 1}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "drain"
+        }
+      ],
+      "result_text": "你用铲子掏出沟里的淤泥和枝叶，沿院边一直清到出水口。沟渠通了，雨水来了就有地方流，不必全积在后门前。"
+    },
+    {
+      "id": "plan_move_high",
+      "label": "把低处物资搬到高处",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "move_high"
+        }
+      ],
+      "result_text": "你把低处的口粮搬上高架，又检查了一遍有没有遗漏。包裹都收好了，地板边空了出来。"
+    },
+    {
+      "id": "leave",
+      "label": "暂不准备",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你看了一眼低处的口粮，还是先去忙别的事。雨还没来，但沟里的枝叶和地上的包裹都留在原处。三天很快就会过去。"
+    }
+  ]
+}

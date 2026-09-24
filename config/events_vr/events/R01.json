@@ -1,0 +1,26 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "R01",
+  "title": "风里传来的声响",
+  "summary": "夜里，院外接连传来几声轻响。你贴着窗边看了好一会儿，只看见风卷着塑料布擦过围栏，没有脚步，也没有人影。四周很快又安静下来。",
+  "tags": [
+    "shelter",
+    "cross",
+    "neutral"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "leave",
+      "label": "继续原来的安排",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "风停了，塑料布也不再刮擦围栏。你放下窗帘，回到刚才坐着的地方。"
+    }
+  ]
+}

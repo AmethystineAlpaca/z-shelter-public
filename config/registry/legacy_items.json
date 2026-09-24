@@ -1,0 +1,239 @@
+{
+  "food_cooked": {
+    "name": "熟食",
+    "pack": 2,
+    "price": 4,
+    "stock": 2,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "food_quality": {
+    "name": "优质食品",
+    "pack": 2,
+    "price": 6,
+    "stock": 2,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "fastener": {
+    "name": "紧固件",
+    "pack": 2,
+    "price": 4,
+    "stock": 4,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "rope_cloth": {
+    "name": "绳布",
+    "pack": 2,
+    "price": 4,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "cement": {
+    "name": "水泥",
+    "pack": 3,
+    "price": 9,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "part_mechanical": {
+    "name": "机械零件",
+    "pack": 1,
+    "price": 6,
+    "stock": 4,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "part_electronic": {
+    "name": "电子零件",
+    "pack": 1,
+    "price": 6,
+    "stock": 4,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "fuel_cooking": {
+    "name": "炊事燃料",
+    "pack": 2,
+    "price": 4,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "medicine_basic": {
+    "name": "普通药品",
+    "pack": 2,
+    "price": 8,
+    "stock": 2,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "maintenance_parts": {
+    "name": "通用维护件",
+    "pack": 1,
+    "price": 5,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "gardening_supply": {
+    "name": "种植耗材",
+    "pack": 2,
+    "price": 4,
+    "stock": 2,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "purification_supply": {
+    "name": "净化耗材",
+    "pack": 2,
+    "price": 6,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "battery_small": {
+    "name": "通用电池",
+    "pack": 2,
+    "price": 4,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "tool_repair": {
+    "name": "维修工具",
+    "pack": 1,
+    "price": 18,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "water_container": {
+    "name": "旧版储水桶",
+    "pack": 1,
+    "price": 6,
+    "stock": 2,
+    "load": 2,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "manual_mechanical": {
+    "name": "机械维修资料",
+    "pack": 1,
+    "price": 10,
+    "stock": 1,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "manual_electrical": {
+    "name": "电气安装资料",
+    "pack": 1,
+    "price": 10,
+    "stock": 1,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "manual_construction": {
+    "name": "施工资料",
+    "pack": 1,
+    "price": 10,
+    "stock": 1,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "manual_first_aid": {
+    "name": "急救资料",
+    "pack": 1,
+    "price": 8,
+    "stock": 1,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "radio": {
+    "name": "收音机",
+    "pack": 1,
+    "price": 8,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "medical_box": {
+    "name": "空医疗器材箱",
+    "pack": 1,
+    "price": 12,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0,
+    "unavailable_reason": "尚未实现：诊疗点器材服务。",
+    "legacy_only": true
+  },
+  "music_player": {
+    "name": "音乐设备",
+    "pack": 1,
+    "price": 10,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "battery_storage": {
+    "name": "蓄电池",
+    "pack": 1,
+    "price": 30,
+    "stock": 1,
+    "load": 20,
+    "large_slots": 1,
+    "unavailable_reason": "尚未实现：蓄电池接线、充放电与负载链。",
+    "legacy_only": true
+  },
+  "solar_kit": {
+    "name": "太阳能套件",
+    "pack": 1,
+    "price": 60,
+    "stock": 1,
+    "load": 30,
+    "large_slots": 1,
+    "unavailable_reason": "尚未实现：太阳能发电与蓄电链。",
+    "legacy_only": true
+  },
+  "melee": {
+    "name": "近战武器",
+    "pack": 1,
+    "price": 0,
+    "stock": 0,
+    "load": 3,
+    "large_slots": 0,
+    "legacy_only": true
+  },
+  "water_raw": {
+    "name": "旧版原水",
+    "pack": 1,
+    "price": 0,
+    "stock": 0,
+    "load": 1,
+    "large_slots": 0,
+    "legacy_only": true
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E05",
+  "title": "货架后面的响声",
+  "summary": "你正准备背起搜到的东西，货架后面突然传来“哐”的一声。那里的阴影晃了晃，像是有什么碰到了铁皮；出口就在身后，而更深处的货架上似乎还留着食物。",
+  "tags": [
+    "shelter",
+    "early",
+    "neutral"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "leave",
+      "label": "带现有货物离开",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你抓紧行李，顺着来时的路退开。背后又响了一声，你没有回头；手里这些收获已经值得平安带回去。"
+    },
+    {
+      "id": "observe",
+      "label": "在掩体后观察",
+      "description": "先躲在掩体后看清声音来源，再决定是否离开。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你耐心等到铁皮再次晃动，确认只是风从破窗灌进来。附近没有人影，你沿着来路安全退出了货架间。"
+    },
+    {
+      "id": "rush_shelf",
+      "label": "立刻伸手拿实物",
+      "description": "不先观察，直接从松动的货架边伸手拿取实物。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "$location",
+          "to": "trip_cargo",
+          "resource_id": "food_preserved",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "player",
+          "field": "alive",
+          "value": false
+        }
+      ],
+      "result_text": "你刚伸手拿到实物，松动的货架猛然倒下。剧痛和黑暗同时袭来——你当场晕倒，再也没有醒来。"
+    }
+  ]
+}

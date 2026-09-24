@@ -1,0 +1,64 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M13",
+  "title": "这批汽油换不换",
+  "summary": "周岚打开桶盖，让你闻了一下里面的汽油。他愿意拿两升换两份口粮，不过油桶不送，得用你自己的桶来接。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "any": [
+      {
+        "selected": {
+          "event_id": "E08",
+          "choice_id": "food_for_wood"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E08",
+          "choice_id": "wood_for_food"
+        }
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "trade",
+      "label": "食物 2 换汽油 2 升",
+      "description": "需要自备装得下两升汽油的容器；周岚不会把自己的桶留下。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "zhou",
+          "resource_id": "food_preserved",
+          "amount": 2
+        },
+        {
+          "type": "resource.transfer",
+          "from": "zhou",
+          "to": "home",
+          "resource_id": "gasoline",
+          "amount": 2
+        }
+      ],
+      "result_text": "你递出两份口粮，让周岚把两升汽油倒进你备好的桶里。你拧紧桶盖，又擦了擦溅在桶沿的油。"
+    },
+    {
+      "id": "leave",
+      "label": "留着口粮",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你摇摇头，把口粮收好。周岚拧上油桶盖，提着桶离开。至少今晚吃的东西还在自己手里。"
+    }
+  ]
+}

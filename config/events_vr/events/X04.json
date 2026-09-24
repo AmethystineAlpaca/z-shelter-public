@@ -1,0 +1,121 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "X04",
+  "title": "接待结束",
+  "summary": "住客收拾好行李，空出的铺位又露出了原来的样子。你站在门边送了最后一程，回屋整理这几天留下的东西。",
+  "tags": [
+    "shelter",
+    "cross",
+    "neutral"
+  ],
+  "trigger": {
+    "any": [
+      {
+        "selected": {
+          "event_id": "L11",
+          "choice_id": "leave"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "M06",
+          "choice_id": "host"
+        }
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "see_guest_off",
+      "label": "送临时住客离开",
+      "description": "结束那次留宿一晚的约定。",
+      "prerequisite": {
+        "selected": {
+          "event_id": "L11",
+          "choice_id": "leave"
+        }
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "guest",
+          "field": "location",
+          "value": "road"
+        }
+      ],
+      "result_text": "你把剩下的东西交还给住客，在门口看着对方沿街走远。"
+    },
+    {
+      "id": "see_chen_off",
+      "label": "送陈工离开",
+      "description": "结束陈工借住五天的约定。",
+      "prerequisite": {
+        "selected": {
+          "event_id": "M06",
+          "choice_id": "host"
+        }
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "chen",
+          "field": "location",
+          "value": "road"
+        }
+      ],
+      "result_text": "你帮陈工把工具搬到门外。他道过谢，背起行李沿着公路继续赶路。"
+    },
+    {
+      "id": "invite_guest_again",
+      "label": "和住客约好以后再来",
+      "description": "为一晚留宿留下后续可能。",
+      "prerequisite": {
+        "selected": {
+          "event_id": "L11",
+          "choice_id": "leave"
+        }
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "guest",
+          "field": "location",
+          "value": "road"
+        },
+        {
+          "type": "state.set",
+          "target": "guest",
+          "field": "invited_back",
+          "value": true
+        }
+      ],
+      "result_text": "你送住客离开，把床位空了出来。你们约好七天后再来敲门，到时再商量是否借住。"
+    },
+    {
+      "id": "invite_chen_again",
+      "label": "请陈工以后再来",
+      "description": "把五天的借住变成一段长期联系。",
+      "prerequisite": {
+        "selected": {
+          "event_id": "M06",
+          "choice_id": "host"
+        }
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "chen",
+          "field": "location",
+          "value": "road"
+        },
+        {
+          "type": "state.set",
+          "target": "chen",
+          "field": "invited_back",
+          "value": true
+        }
+      ],
+      "result_text": "你送陈工离开，把床位空了出来。你们约好七天后再见，他说会带上能交换的金属余料。"
+    }
+  ]
+}

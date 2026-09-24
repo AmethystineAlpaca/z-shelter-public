@@ -1,0 +1,62 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E07",
+  "title": "雨夜松动的挡板",
+  "summary": "一阵狂风撞上屋外，木板随即发出刺耳的刮擦声。你赶到入口时，发现雨水已经泡松钉孔，一块挡板正随着风势反复掀动，再来几下就可能整块脱落。",
+  "tags": [
+    "shelter",
+    "early",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "repair_now",
+      "label": "用一份木料修好",
+      "description": "消耗 1 份木料，把被风雨扯松的地方重新钉牢。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.change",
+          "holder": "home",
+          "resource_id": "wood",
+          "delta": -1
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你换上一份木料，把松动的挡板重新钉牢。试着推了推，挡板不再晃动，风也不再从这一处灌进来。"
+    },
+    {
+      "id": "leave",
+      "label": "先不修，保留木料",
+      "description": "保留木料，门的耐久一次性减少 1。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.change",
+          "target": "entry.door",
+          "field": "hp",
+          "delta": -1
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你把木料收回原处。松动的挡板还在风里轻响，这一处已经没有原来牢靠了。等腾出材料，得再来补上。"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L07",
+  "title": "突然很饿",
+  "summary": "今天一天格外忙碌。临睡前，你莫名觉得特别饿，想再吃一份食物；也可以忍一忍，睡过去也许就好了。",
+  "tags": [
+    "shelter",
+    "late",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "plan_fine_meal",
+      "label": "现在吃一份食物",
+      "description": "消耗 1 份食物，今晚安心睡下。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.change",
+          "holder": "home",
+          "resource_id": "food_preserved",
+          "delta": -1
+        }
+      ],
+      "result_text": "你取出一份食物吃下去。胃里有了东西，紧绷的身子也松了些。"
+    },
+    {
+      "id": "leave",
+      "label": "忍一忍，睡过去就好了",
+      "description": "不消耗食物；仅当晚的饱食度消耗增加 50%（通常由 22 变为 33）。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "modifier.add",
+          "target": "player",
+          "modifier_id": "nightly_hunger_loss_multiplier",
+          "value": 1.5,
+          "duration_nights": 1
+        }
+      ],
+      "result_text": "你把食物放回原处，忍着饥饿躺下睡觉。希望这一觉醒来，胃里的空荡感已经过去。"
+    }
+  ]
+}

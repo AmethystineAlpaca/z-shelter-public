@@ -1,0 +1,44 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M01",
+  "title": "维修站还剩些什么",
+  "summary": "维修站里的阿岑正从旧车上拆东西。他指了指脚边两份拆好的金属板，说你要是需要，就带走。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "salvage",
+      "label": "带走两份金属材料",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "repair_shop",
+          "to": "trip_cargo",
+          "resource_id": "metal",
+          "amount": 2
+        }
+      ],
+      "result_text": "你把两份金属余料捆好，向阿岑道了谢。他继续埋头拆车，你绕过地上的工具往外走。"
+    },
+    {
+      "id": "leave",
+      "label": "先不拿材料",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说这趟先不拿，和阿岑打了个招呼，把行李重新背好。"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L11",
+  "title": "住客想把这里当成家",
+  "summary": "借住的人把铺盖叠好，临到门口却停了下来。他小心地问，能不能留下。那张床得一直给他，往后每天也要多备一份饭。",
+  "tags": [
+    "shelter",
+    "late",
+    "neutral"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "E09",
+      "choice_id": "host"
+    }
+  },
+  "choices": [
+    {
+      "id": "stay",
+      "label": "留下共同生活，每天多供一份食物",
+      "description": "留出一张床，每天多备一份饭，家里需有备用水。若供不起饭，就得让他另找住处。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "permanent_stay",
+          "params": {
+            "npc": "guest"
+          }
+        }
+      ],
+      "result_text": "你指了指原来的睡位，说可以留下。他慢慢把行李放回去，又问起晚饭该放在哪里。从今天起，算口粮时得把他那份也算上。"
+    },
+    {
+      "id": "leave",
+      "label": "还是按原来的约定",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说还是按原来的约定。他低头把铺盖捆紧，答应天亮就走。你没有改口，只替他让出门边放行李的位置。"
+    }
+  ]
+}

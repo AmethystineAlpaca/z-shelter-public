@@ -1,0 +1,68 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M04",
+  "title": "电器仓里的大件",
+  "summary": "电器仓里还放着发电机和一套监控设备。发电机沉得一个人抱不走，得靠手推车；监控盒轻些，装好后可以看看门外的动静，不过还得有电。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "generator",
+      "label": "带走发电机",
+      "description": "负载 30；需手推车等运力。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "electronics",
+          "to": "trip_cargo",
+          "resource_id": "generator",
+          "amount": 1
+        }
+      ],
+      "result_text": "你把发电机挪上车，用绳子固定牢。机器沉得轮轴一歪；回家还得接好线路，停电时才用得上。"
+    },
+    {
+      "id": "camera",
+      "label": "带走监控套件",
+      "description": "带回监控套件，并在回到住处后完成安装。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "electronics",
+          "to": "installed:camera",
+          "resource_id": "camera_kit",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "camera",
+          "field": "status",
+          "value": "available"
+        }
+      ],
+      "result_text": "你把监控套件带回住宅，顺手固定好摄像头、接上屏幕。设备已经装好；住宅有电时，就能看见门外的动静。"
+    },
+    {
+      "id": "leave",
+      "label": "这趟不搬大件",
+      "description": "设备留在电器仓。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你重新盖好设备上的防尘布，没有再添行李。"
+    }
+  ]
+}

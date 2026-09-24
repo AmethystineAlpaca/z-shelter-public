@@ -1,0 +1,62 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M18",
+  "title": "周岚想定期来往",
+  "summary": "临走前，周岚回头问你，要不要把下一次见面的日子定下来。他七天后还会经过这里，到时带着什么货再当面谈，不必现在作交易承诺。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "any": [
+      {
+        "selected": {
+          "event_id": "E08",
+          "choice_id": "food_for_wood"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E08",
+          "choice_id": "wood_for_food"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "M17",
+          "choice_id": "side"
+        }
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "regular",
+      "label": "约好每隔七天在门口见",
+      "description": "每隔七天再见，到时再谈交换。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "zhou",
+          "field": "regular",
+          "value": true
+        }
+      ],
+      "result_text": "你们约好每隔七天在门口碰面。周岚重复了一遍日子，才背起袋子离开。到时还剩什么货，就等见了面再说。"
+    },
+    {
+      "id": "leave",
+      "label": "继续偶尔碰面",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说不必定日子，碰上再聊。周岚笑了笑，拎起货袋走了。街上什么时候再有他的脚步声，谁也说不准。"
+    }
+  ]
+}

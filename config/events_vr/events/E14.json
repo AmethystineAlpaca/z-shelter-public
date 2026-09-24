@@ -1,0 +1,41 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E14",
+  "title": "后门被杂物挡住了",
+  "summary": "你试着推开后门，门板却只挪动了一条缝。倒下的柜子和杂物把外面的窄道堵得严严实实；真遇上危险，这条退路现在救不了任何人。",
+  "tags": [
+    "shelter",
+    "early",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "plan_clear_exit",
+      "label": "清理后门",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "clear_exit"
+        }
+      ],
+      "result_text": "你把倒下的杂物一件件挪开，清出后门前的窄道。门终于能推到底了，巷子就在外面；需要退走时，不必再被堵在屋里。"
+    },
+    {
+      "id": "leave",
+      "label": "暂时不清理",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你试着再推了一下门，还是被挡住了。今天先不清，真要离开屋子时，就只能另找路走。"
+    }
+  ]
+}

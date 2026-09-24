@@ -1,0 +1,50 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E12",
+  "title": "店门口的手推车",
+  "summary": "店门旁靠着一辆手推车。你试着推了一下，轮轴吱呀作响，但还转得动。有了它，再碰到沉重的设备就不必只看着了。",
+  "tags": [
+    "shelter",
+    "early",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "take_cart",
+      "label": "推着这辆车随行",
+      "description": "把手推车带回住宅。它能装下更多东西，但你仍得亲自沿路把它推回去。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "store",
+          "to": "trip_cargo",
+          "resource_id": "cart",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "cart_found",
+          "field": "status",
+          "value": "claimed"
+        }
+      ],
+      "result_text": "你把手推车一路推回住宅。轮子有些响，但总算把它带了回来；从现在起，你拥有了一辆手推车。之后外出搜刮时带上它，就能带回更多东西。"
+    },
+    {
+      "id": "mark",
+      "label": "不带手推车",
+      "description": "手推车继续留在店门口。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你松开把手，让车靠回墙边。行李仍由自己背着；这趟先照原路回去。"
+    }
+  ]
+}

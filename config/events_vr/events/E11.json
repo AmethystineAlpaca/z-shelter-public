@@ -1,0 +1,60 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E11",
+  "title": "林禾想用一下工具",
+  "summary": "林禾抱着一捆修缮材料来找你，神情有些窘迫。他家的破口不算大，材料也已经备齐，只是手边没有趁手工具；你若肯带工具过去搭把手，很快就能处理好。",
+  "tags": [
+    "shelter",
+    "early",
+    "neutral"
+  ],
+  "trigger": {
+    "any": [
+      {
+        "selected": {
+          "event_id": "E01",
+          "choice_id": "promise"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E01",
+          "choice_id": "exchange"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E01",
+          "choice_id": "gift"
+        }
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "plan_neighbor_repair",
+      "label": "带工具过去帮忙",
+      "description": "用基础工具帮林禾修好窗板，工具保留。",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "tool_basic", "amount": 1}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "neighbor_repair"
+        }
+      ],
+      "result_text": "你带工具过去，把林禾窗边松动的木板重新固定好。他推了推窗框，终于松了口气，记下了你这次帮忙。工具收好带回，往后街坊有事也愿意先来找你商量。"
+    },
+    {
+      "id": "leave",
+      "label": "这次抽不开身",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说眼下抽不开身。林禾应了一声，把修缮材料抱回去。隔壁的破口还在，他得继续想办法。"
+    }
+  ]
+}

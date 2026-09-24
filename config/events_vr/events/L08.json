@@ -1,0 +1,66 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L08",
+  "title": "公共储备需要补上一批",
+  "summary": "林禾带着空粮袋来了。先前守路口的口粮已经吃完，愿意值守的人暂时散了。他问你还能不能匀出两份。",
+  "tags": [
+    "shelter",
+    "late",
+    "neutral"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "L02",
+      "choice_id": "rota"
+    }
+  },
+  "choices": [
+    {
+      "id": "donate",
+      "label": "捐两份食物，不作新承诺",
+      "description": "交出食物 2，供街口再支援两次。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "community",
+          "resource_id": "food_preserved",
+          "amount": 2
+        },
+        {
+          "type": "state.set",
+          "target": "community",
+          "field": "shortage",
+          "value": false
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你往袋里装了两份食物。林禾掂了掂，说会叫大家回来轮值。先前那几张熟悉的面孔，总算还能在来袭时帮上一把。"
+    },
+    {
+      "id": "leave",
+      "label": "这次不参加",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你给他看了看家里的口粮，说这次实在匀不出来。林禾收起空袋走了；下一次来袭，街口暂时不会有人接应。"
+    }
+  ]
+}

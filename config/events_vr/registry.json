@@ -1,0 +1,2810 @@
+{
+  "schema_version": "event-vr-1",
+  "package_id": "shelter_events_v2",
+  "title": "避难所 Events V2",
+  "description": "事件、历史选择与确定结果；投递元数据记录地点和到期后续。",
+  "event_schema": "event-vr.schema.json",
+  "entry_event_ids": [
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09",
+    "E10",
+    "E12",
+    "E14",
+    "L07",
+    "M01",
+    "M04",
+    "M05",
+    "M06",
+    "M07",
+    "M08",
+    "M09",
+    "M12",
+    "X01",
+    "R01"
+  ],
+  "event_files": [
+    "events/E01.json",
+    "events/E02.json",
+    "events/E03.json",
+    "events/E04.json",
+    "events/E05.json",
+    "events/E06.json",
+    "events/E07.json",
+    "events/E08.json",
+    "events/E09.json",
+    "events/E10.json",
+    "events/E11.json",
+    "events/E12.json",
+    "events/E14.json",
+    "events/L01.json",
+    "events/L02.json",
+    "events/L05.json",
+    "events/L06.json",
+    "events/L07.json",
+    "events/L08.json",
+    "events/L11.json",
+    "events/M01.json",
+    "events/M02.json",
+    "events/M04.json",
+    "events/M05.json",
+    "events/M06.json",
+    "events/M07.json",
+    "events/M08.json",
+    "events/M09.json",
+    "events/M12.json",
+    "events/M13.json",
+    "events/M15.json",
+    "events/M16.json",
+    "events/M17.json",
+    "events/M18.json",
+    "events/X01.json",
+    "events/X02.json",
+    "events/X04.json",
+    "events/X05.json",
+    "events/R01.json",
+    "events/R02.json"
+  ],
+  "choice_history_key_format": "{event_id}.{choice_id}",
+  "logic_operators": [
+    "always",
+    "selected",
+    "inventory_at_least",
+    "all",
+    "any"
+  ],
+  "effect_types": [
+    "resource.change",
+    "resource.transfer",
+    "state.set",
+    "state.change",
+    "modifier.add",
+    "action.execute",
+    "world.resolve"
+  ],
+  "delivery": [
+    {
+      "event_id": "E01",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "once_per_run",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "lin",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "lin",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "all": []
+          },
+          {
+            "op": "field_compare",
+            "entity": "lin",
+            "field": "needs_wood",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "lin",
+            "item_id": "shovel",
+            "amount": 1
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "high"
+    },
+    {
+      "event_id": "E02",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 3
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "home"
+      },
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "home",
+          "field": "water",
+          "value": false
+        }
+      ]
+    },
+    {
+      "event_id": "E03",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 3
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "home"
+      },
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "home",
+          "field": "power",
+          "value": false
+        }
+      ]
+    },
+    {
+      "event_id": "E04",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "once_per_run",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "hardware"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "hardware",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "hardware"
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "high"
+    },
+    {
+      "event_id": "E05",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "store"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "trip",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "not": {
+                  "op": "field_compare",
+                  "entity": "player",
+                  "field": "location",
+                  "cmp": "eq",
+                  "value": "home"
+                }
+              },
+              {
+                "op": "field_compare",
+                "entity": "trip",
+                "field": "loaded",
+                "cmp": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "$location",
+            "item_id": "food_preserved",
+            "amount": 1
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "E06",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 3
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "footprints",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "player",
+                "field": "location",
+                "cmp": "eq",
+                "value": "home"
+              },
+              {
+                "op": "field_compare",
+                "entity": "footprints",
+                "field": "status",
+                "cmp": "eq",
+                "value": "new"
+              }
+            ]
+          },
+          {
+            "op": "field_compare",
+            "entity": "trap",
+            "field": "status",
+            "cmp": "eq",
+            "value": "unbuilt"
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "E07",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "$source",
+            "field": "status",
+            "cmp": "eq",
+            "value": "unrepaired"
+          }
+        ]
+      },
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "unrepaired"
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "entry_damage",
+          "value": true
+        }
+      ]
+    },
+    {
+      "event_id": "E08",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 3
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "zhou",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "zhou",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "all": []
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "E09",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 3
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "guest",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "guest",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "guest",
+            "field": "location",
+            "cmp": "eq",
+            "value": "road"
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "low"
+    },
+    {
+      "event_id": "E10",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "home"
+      },
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "resolution",
+          "value": "rain"
+        }
+      ]
+    },
+    {
+      "event_id": "E11",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "lin",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "lin",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "lin",
+            "field": "minor_damage",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "lin",
+            "item_id": "wood",
+            "amount": 1
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "E12",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "store"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "cart_found",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "player",
+                "field": "location",
+                "cmp": "eq",
+                "value": "store"
+              },
+              {
+                "op": "field_compare",
+                "entity": "cart_found",
+                "field": "status",
+                "cmp": "eq",
+                "value": "unclaimed"
+              }
+            ]
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "store",
+            "item_id": "cart",
+            "amount": 1
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "E14",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "home",
+            "field": "back_exit",
+            "cmp": "eq",
+            "value": false
+          }
+        ]
+      },
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "home",
+          "field": "back_exit",
+          "value": false
+        }
+      ]
+    },
+    {
+      "event_id": "L01",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "once_per_run",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "lin",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "player",
+                "field": "location",
+                "cmp": "eq",
+                "value": "home"
+              },
+              {
+                "op": "field_compare",
+                "entity": "lin",
+                "field": "alive",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "all": []
+              }
+            ]
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "active",
+            "cmp": "eq",
+            "value": false
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "L02",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "active"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "home",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "active",
+            "cmp": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "L05",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "power_unit",
+            "field": "status",
+            "cmp": "eq",
+            "value": "available"
+          },
+          {
+            "op": "field_compare",
+            "entity": "home",
+            "field": "power",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "home",
+            "item_id": "generator",
+            "amount": 1
+          }
+        ]
+      },
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "power_unit",
+          "field": "status",
+          "value": "broken"
+        },
+        {
+          "type": "state.set",
+          "target": "home",
+          "field": "power",
+          "value": false
+        }
+      ],
+      "observe": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "power_unit",
+            "field": "status",
+            "cmp": "eq",
+            "value": "broken"
+          },
+          {
+            "op": "field_compare",
+            "entity": "home",
+            "field": "power",
+            "cmp": "eq",
+            "value": false
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "L06",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "road",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "road_broken",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "lin",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "L07",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 1
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "home",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "high"
+    },
+    {
+      "event_id": "L08",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "player",
+                "field": "location",
+                "cmp": "eq",
+                "value": "home"
+              },
+              {
+                "op": "field_compare",
+                "entity": "community",
+                "field": "active",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "op": "field_compare",
+                "entity": "community",
+                "field": "shortage",
+                "cmp": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "community",
+                "field": "policy",
+                "cmp": "eq",
+                "value": "rota"
+              },
+              {
+                "not": {
+                  "op": "inventory_at_least",
+                  "holder": "community",
+                  "item_id": "food_preserved",
+                  "amount": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium",
+      "source_effects": [
+        {
+          "type": "state.set",
+          "target": "community",
+          "field": "shortage",
+          "value": true
+        }
+      ]
+    },
+    {
+      "event_id": "L11",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random",
+        "active"
+      ],
+      "timing": {
+        "type": "after_choice",
+        "after": {
+          "event_id": "E09",
+          "choice_id": "host"
+        },
+        "delay_days": 1,
+        "source": "guest",
+        "cancel_when": {
+          "any": [
+            {
+              "op": "field_compare",
+              "entity": "$visitor",
+              "field": "location",
+              "cmp": "ne",
+              "value": "home"
+            },
+            {
+              "op": "field_compare",
+              "entity": "$visitor",
+              "field": "permanent",
+              "cmp": "eq",
+              "value": true
+            }
+          ]
+        }
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "guest",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "guest",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "guest",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "not": {
+              "op": "field_compare",
+              "entity": "guest",
+              "field": "permanent",
+              "cmp": "eq",
+              "value": true
+            }
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "low"
+    },
+    {
+      "event_id": "M01",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random",
+        "active"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "once_per_run",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "repair_shop"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "cen",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "repair_shop"
+          },
+          {
+            "op": "field_compare",
+            "entity": "cen",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "M02",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random",
+        "active"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "repair_shop"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "cen",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "repair_shop"
+          },
+          {
+            "op": "field_compare",
+            "entity": "cen",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "all": []
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "cen",
+            "item_id": "shovel",
+            "amount": 1
+          },
+          {
+            "not": {
+              "any": [
+                {
+                  "op": "inventory_at_least",
+                  "holder": "home",
+                  "item_id": "shovel",
+                  "amount": 1
+                },
+                {
+                  "op": "inventory_at_least",
+                  "holder": "trip_cargo",
+                  "item_id": "shovel",
+                  "amount": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "high"
+    },
+    {
+      "event_id": "M04",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "electronics"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "electronics",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "electronics"
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "M05",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "active"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "home",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "home"
+      }
+    },
+    {
+      "event_id": "M06",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "once_per_run",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "chen",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "player",
+                "field": "location",
+                "cmp": "eq",
+                "value": "home"
+              },
+              {
+                "op": "field_compare",
+                "entity": "chen",
+                "field": "alive",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "op": "field_compare",
+                "entity": "chen",
+                "field": "location",
+                "cmp": "eq",
+                "value": "road"
+              }
+            ]
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "chen",
+            "item_id": "tool_construction",
+            "amount": 1
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "low"
+    },
+    {
+      "event_id": "M07",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "home"
+      }
+    },
+    {
+      "event_id": "M08",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "field_compare",
+        "entity": "player",
+        "field": "location",
+        "cmp": "eq",
+        "value": "home"
+      }
+    },
+    {
+      "event_id": "M09",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "residence"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "weapon_cache",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "residence"
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "residence",
+            "item_id": "firearm",
+            "amount": 1
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "low"
+    },
+    {
+      "event_id": "M12",
+      "channels": [
+        "outing"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "garden_shop"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "garden_shop",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "garden_shop"
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "garden_shop",
+            "item_id": "seed",
+            "amount": 2
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "M13",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 3
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "zhou",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "player",
+                "field": "location",
+                "cmp": "eq",
+                "value": "home"
+              },
+              {
+                "op": "field_compare",
+                "entity": "zhou",
+                "field": "alive",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "all": []
+              },
+              {
+                "op": "inventory_at_least",
+                "holder": "zhou",
+                "item_id": "gasoline",
+                "amount": 2
+              }
+            ]
+          },
+          {
+            "all": []
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "medium"
+    },
+    {
+      "event_id": "M15",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "trap",
+            "field": "status",
+            "cmp": "eq",
+            "value": "spent"
+          }
+        ]
+      },
+      "observe": {
+        "op": "field_compare",
+        "entity": "trap",
+        "field": "status",
+        "cmp": "eq",
+        "value": "spent"
+      }
+    },
+    {
+      "event_id": "M16",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "active"
+      ],
+      "timing": {
+        "type": "after_choice",
+        "after": {
+          "event_id": "M06",
+          "choice_id": "host"
+        },
+        "delay_days": 1,
+        "source": "chen"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "chen",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "chen",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "M17",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "camera",
+            "field": "status",
+            "cmp": "eq",
+            "value": "available"
+          },
+          {
+            "op": "field_compare",
+            "entity": "home",
+            "field": "power",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "zhou",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "all": []
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "M18",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 7
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "zhou",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "zhou",
+            "field": "alive",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "all": []
+          },
+          {
+            "not": {
+              "op": "field_compare",
+              "entity": "zhou",
+              "field": "regular",
+              "cmp": "eq",
+              "value": true
+            }
+          }
+        ]
+      },
+      "offer_requires": {
+        "all": []
+      },
+      "frequency": "low"
+    },
+    {
+      "event_id": "X01",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "at_location",
+            "entity": "player",
+            "location": "home"
+          }
+        ]
+      },
+      "urgent": true
+    },
+    {
+      "event_id": "X02",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "after_choice",
+        "after": {
+          "event_id": "X01",
+          "choice_id": "take_weapon"
+        },
+        "delay_days": 0,
+        "inherit_source": true
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "$source",
+            "field": "stage",
+            "cmp": "eq",
+            "value": "breached"
+          }
+        ]
+      },
+      "urgent": true
+    },
+    {
+      "event_id": "X04",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "choice_dependent",
+        "rules": [
+          {
+            "after": {
+              "event_id": "L11",
+              "choice_id": "leave"
+            },
+            "delay_days": 0,
+            "source": "guest",
+            "cancel_when": {
+              "any": [
+                {
+                  "op": "field_compare",
+                  "entity": "$visitor",
+                  "field": "location",
+                  "cmp": "ne",
+                  "value": "home"
+                },
+                {
+                  "op": "field_compare",
+                  "entity": "$visitor",
+                  "field": "permanent",
+                  "cmp": "eq",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "after": {
+              "event_id": "M06",
+              "choice_id": "host"
+            },
+            "delay_days": 5,
+            "source": "chen",
+            "cancel_when": {
+              "any": [
+                {
+                  "op": "field_compare",
+                  "entity": "$visitor",
+                  "field": "location",
+                  "cmp": "ne",
+                  "value": "home"
+                },
+                {
+                  "op": "field_compare",
+                  "entity": "$visitor",
+                  "field": "permanent",
+                  "cmp": "eq",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": []
+      },
+      "choice_requires": {
+        "see_guest_off": {
+          "all": [
+            {
+              "op": "field_compare",
+              "entity": "guest",
+              "field": "location",
+              "cmp": "eq",
+              "value": "home"
+            },
+            {
+              "op": "field_compare",
+              "entity": "$source",
+              "field": "target",
+              "cmp": "eq",
+              "value": "guest"
+            }
+          ]
+        },
+        "see_chen_off": {
+          "all": [
+            {
+              "op": "field_compare",
+              "entity": "chen",
+              "field": "location",
+              "cmp": "eq",
+              "value": "home"
+            },
+            {
+              "op": "field_compare",
+              "entity": "$source",
+              "field": "target",
+              "cmp": "eq",
+              "value": "chen"
+            }
+          ]
+        },
+        "invite_guest_again": {
+          "all": [
+            {
+              "op": "field_compare",
+              "entity": "guest",
+              "field": "location",
+              "cmp": "eq",
+              "value": "home"
+            },
+            {
+              "op": "field_compare",
+              "entity": "$source",
+              "field": "target",
+              "cmp": "eq",
+              "value": "guest"
+            }
+          ]
+        },
+        "invite_chen_again": {
+          "all": [
+            {
+              "op": "field_compare",
+              "entity": "chen",
+              "field": "location",
+              "cmp": "eq",
+              "value": "home"
+            },
+            {
+              "op": "field_compare",
+              "entity": "$source",
+              "field": "target",
+              "cmp": "eq",
+              "value": "chen"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event_id": "X05",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "timing": {
+        "type": "after_choice",
+        "after": {
+          "event_id": "E01",
+          "choice_id": "promise"
+        },
+        "delay_days": 3,
+        "source": "player"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "source",
+          "from_context": "source_id",
+          "required": true
+        }
+      },
+      "requires": {
+        "all": []
+      }
+    },
+    {
+      "event_id": "R01",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "random"
+      ],
+      "timing": {
+        "type": "director_managed"
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 1
+      },
+      "locations": [
+        "home"
+      ],
+      "bindings": {
+        "actor": {
+          "kind": "player",
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "kind": "entity",
+          "id": "player",
+          "required": true
+        }
+      },
+      "requires": {
+        "op": "entity_alive",
+        "entity": "player"
+      },
+      "offer_requires": {
+        "op": "fact",
+        "fact_id": "pity_only_internal"
+      },
+      "frequency": "high"
+    },
+    {
+      "event_id": "R02",
+      "channels": [
+        "day_transition"
+      ],
+      "delivery_types": [
+        "source"
+      ],
+      "locations": [
+        "home"
+      ],
+      "timing": {
+        "type": "choice_dependent",
+        "rules": [
+          {
+            "after": {
+              "event_id": "E10",
+              "choice_id": "plan_drain"
+            },
+            "delay_days": 3,
+            "source": "player",
+            "inherit_source": true,
+            "resolution": "rain"
+          },
+          {
+            "after": {
+              "event_id": "E10",
+              "choice_id": "plan_move_high"
+            },
+            "delay_days": 3,
+            "source": "player",
+            "inherit_source": true,
+            "resolution": "rain"
+          },
+          {
+            "after": {
+              "event_id": "E10",
+              "choice_id": "leave"
+            },
+            "delay_days": 3,
+            "source": "player",
+            "inherit_source": true,
+            "resolution": "rain"
+          }
+        ]
+      },
+      "repeat": {
+        "mode": "repeatable",
+        "cooldown_days": 0
+      },
+      "bindings": {
+        "actor": {
+          "id": "player",
+          "required": true
+        },
+        "source": {
+          "from_context": true,
+          "required": true
+        }
+      },
+      "requires": {
+        "all": []
+      },
+      "offer_requires": {
+        "op": "fact",
+        "fact_id": "pity_only_internal"
+      },
+      "frequency": "high",
+      "source_report": true
+    }
+  ],
+  "followups": [
+    {
+      "id": "horde",
+      "after_event": "M07",
+      "delay_days": 5,
+      "event_id": "X01",
+      "guaranteed": true,
+      "resolution": "threat",
+      "strength": 3,
+      "text": "先前预警的尸群已经到了，院外接连响起撞击声。"
+    },
+    {
+      "id": "raiders",
+      "after_event": "M08",
+      "delay_days": 3,
+      "event_id": "X01",
+      "guaranteed": true,
+      "resolution": "threat",
+      "strength": 2,
+      "cancel_if": "source_resolved",
+      "text": "留下勒索纸条的人到了。他们没有收到要的东西，正在强行撞门。"
+    },
+    {
+      "id": "regular_trade",
+      "after": {
+        "event_id": "M18",
+        "choice_id": "regular"
+      },
+      "delay_days": 7,
+      "repeat_days": 7,
+      "event_id": "E08",
+      "guaranteed": true,
+      "source": "zhou",
+      "repeat_requires": {
+        "op": "field_compare",
+        "entity": "zhou",
+        "field": "regular",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "guest_return",
+      "after": {
+        "event_id": "X04",
+        "choice_id": "invite_guest_again"
+      },
+      "delay_days": 7,
+      "event_id": "E09",
+      "guaranteed": true,
+      "source": "guest"
+    },
+    {
+      "id": "chen_return",
+      "after": {
+        "event_id": "X04",
+        "choice_id": "invite_chen_again"
+      },
+      "delay_days": 7,
+      "event_id": "M16",
+      "guaranteed": true,
+      "source": "chen"
+    }
+  ],
+  "system_links": [
+    {
+      "from_event": "M04",
+      "event_id": "M17",
+      "label": "带回监控即装好 → 有电时可能发现熟人",
+      "actions": []
+    },
+    {
+      "from_event": "E02",
+      "event_id": "E02",
+      "label": "接受停水 → 每天备用水 -1 → 无水三天死亡；金属 1 可随时恢复供水",
+      "actions": [
+        "restore_water"
+      ]
+    },
+    {
+      "from_event": "X01",
+      "event_id": "M15",
+      "label": "防御实际用到陷阱 → 陷阱变为已触发 → 提醒复位",
+      "actions": [
+        "trap_reset"
+      ]
+    }
+  ],
+  "source_rules": [
+    {
+      "id": "E02",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "water",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "E03",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "power",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "E07",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "entries.door",
+        "field": "hp",
+        "cmp": "gt",
+        "value": 0
+      }
+    },
+    {
+      "id": "E14",
+      "weight": 2,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "back_exit",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "E10",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "drained",
+        "cmp": "eq",
+        "value": false
+      }
+    },
+    {
+      "id": "M07",
+      "weight": 2,
+      "requires": {
+        "all": []
+      }
+    },
+    {
+      "id": "M08",
+      "weight": 2,
+      "requires": {
+        "all": []
+      },
+      "blocked_until": {
+        "entity": "raiders",
+        "field": "truce_until"
+      }
+    },
+    {
+      "id": "L05",
+      "weight": 2,
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "power_unit",
+            "field": "status",
+            "cmp": "eq",
+            "value": "available"
+          },
+          {
+            "op": "field_compare",
+            "entity": "home",
+            "field": "power",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "home",
+            "item_id": "generator",
+            "amount": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "L08",
+      "weight": 2,
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "active",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "policy",
+            "cmp": "eq",
+            "value": "rota"
+          },
+          {
+            "not": {
+              "op": "inventory_at_least",
+              "holder": "community",
+              "item_id": "food_preserved",
+              "amount": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "M17",
+      "weight": 1,
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "camera",
+                "field": "status",
+                "cmp": "eq",
+                "value": "available"
+              },
+              {
+                "op": "field_compare",
+                "entity": "home",
+                "field": "power",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "op": "field_compare",
+                "entity": "zhou",
+                "field": "known",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "op": "field_compare",
+                "entity": "zhou",
+                "field": "alive",
+                "cmp": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "zhou",
+            "item_id": "wood",
+            "amount": 2
+          }
+        ]
+      }
+    }
+  ]
+}

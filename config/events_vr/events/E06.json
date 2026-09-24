@@ -1,0 +1,41 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E06",
+  "title": "院外留下的脚印",
+  "summary": "清晨的泥地上多出一串脚印，从巷口一路绕到院墙边，随后又折了回去。你站在脚印尽头，发现这里几乎没有遮挡。",
+  "tags": [
+    "shelter",
+    "early",
+    "neutral"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "plan_build_trap",
+      "label": "建设院边阻拦陷阱",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "wood", "amount": 3}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_trap"
+        }
+      ],
+      "result_text": "你用三份木料在院边搭好阻拦陷阱，试了试卡扣。下次有东西从这里冲来，它能先挡一下；触发过后得重新布置。"
+    },
+    {
+      "id": "leave",
+      "label": "暂不处理",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你沿院墙看了一圈，没有动那捆木料。脚印还留在泥里，院边仍是空的；门窗得继续承担这份压力。"
+    }
+  ]
+}

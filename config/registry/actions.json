@@ -1,0 +1,1038 @@
+{
+  "entry_loose_short_repair": {
+    "id": "entry_loose_short_repair",
+    "label": "修好松动挡板",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "wood",
+          "amount": 1
+        },
+        {
+          "op": "field_compare",
+          "entity": "$source",
+          "field": "status",
+          "cmp": "eq",
+          "value": "unrepaired"
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "wood",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "source_resolved",
+        "params": {}
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "clear_exit": {
+    "id": "clear_exit",
+    "label": "清理后门",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "home",
+          "field": "back_exit",
+          "cmp": "eq",
+          "value": false
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "back_exit",
+        "value": true
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "drain": {
+    "id": "drain",
+    "label": "疏通排水",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "shovel",
+          "amount": 1
+        },
+        {
+          "op": "field_compare",
+          "entity": "home",
+          "field": "drained",
+          "cmp": "eq",
+          "value": false
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "drained",
+        "value": true
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "move_high": {
+    "id": "move_high",
+    "label": "把低处物资搬到高处",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "home",
+          "field": "high_storage",
+          "cmp": "eq",
+          "value": false
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "high_storage",
+        "value": true
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "neighbor_repair": {
+    "id": "neighbor_repair",
+    "label": "带工具帮助林禾",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "tool_basic",
+          "amount": 1
+        },
+        {
+          "op": "field_compare",
+          "entity": "lin",
+          "field": "alive",
+          "cmp": "eq",
+          "value": true
+        },
+        {
+          "op": "field_compare",
+          "entity": "lin",
+          "field": "minor_damage",
+          "cmp": "eq",
+          "value": true
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "lin",
+          "item_id": "wood",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "lin",
+        "item_id": "wood",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "lin",
+        "field": "minor_damage",
+        "value": false
+      },
+      {
+        "op": "entity.set",
+        "entity": "lin",
+        "field": "helped",
+        "value": true
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "rest": {
+    "id": "rest",
+    "label": "休息",
+    "requires": {"all": []},
+    "costs": [],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "rest",
+        "params": {}
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 120,
+    "event_policy": false,
+    "steps": 1
+  },
+  "cook": {
+    "id": "cook",
+    "label": "吃一份新鲜食物",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "food_fresh",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "food_fresh",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "learn",
+        "params": {
+          "recipe": "meal"
+        }
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 0,
+    "event_policy": true,
+    "steps": 1
+  },
+  "trap_reset": {
+    "id": "trap_reset",
+    "label": "复位陷阱",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "trap",
+          "field": "status",
+          "cmp": "eq",
+          "value": "spent"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "tool_basic",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "trap",
+        "field": "status",
+        "value": "available"
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 0,
+    "event_policy": true,
+    "steps": 1
+  },
+  "plant": {
+    "id": "plant",
+    "label": "播种快速土豆种子",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "garden",
+          "field": "status",
+          "cmp": "eq",
+          "value": "empty"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "seed",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "seed",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "plant",
+        "params": {}
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 0,
+    "event_policy": true,
+    "steps": 1
+  },
+  "return_home": {
+    "id": "return_home",
+    "label": "观察退路并返回住宅",
+    "requires": {
+      "all": [
+        {
+          "not": {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          }
+        },
+        {
+          "op": "field_compare",
+          "entity": "home",
+          "field": "reachable",
+          "cmp": "eq",
+          "value": true
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "return_home",
+        "params": {}
+      }
+    ],
+    "stamina_units": 50,
+    "duration_minutes": 60,
+    "event_policy": false,
+    "steps": 1
+  },
+  "treat": {
+    "id": "treat",
+    "label": "普通伤口护理",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "injury",
+          "cmp": "eq",
+          "value": true
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "bandage",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "bandage",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "treat",
+        "params": {}
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 0,
+    "event_policy": true,
+    "steps": 1
+  },
+  "restore_water": {
+    "id": "restore_water",
+    "label": "用一份金属修好水龙头",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "home",
+          "field": "water",
+          "cmp": "eq",
+          "value": false
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "metal",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "metal",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "water",
+        "value": true
+      },
+      {
+        "op": "world.resolve",
+        "resolver_id": "source_resolved",
+        "params": {}
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "repair_power_unit": {
+    "id": "repair_power_unit",
+    "label": "修复发电机接线卡扣",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "power_unit",
+          "field": "status",
+          "cmp": "eq",
+          "value": "broken"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "metal",
+          "amount": 1
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "tool_basic",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "metal",
+        "amount": 1
+      }
+    ],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "power_unit",
+        "field": "status",
+        "value": "available"
+      },
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "power",
+        "value": true
+      },
+      {
+        "op": "world.resolve",
+        "resolver_id": "source_resolved",
+        "params": {}
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "repair_road": {
+    "id": "repair_road",
+    "label": "补好通往外面的路面",
+    "inventory_visible": false,
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "community",
+          "field": "road_broken",
+          "cmp": "eq",
+          "value": true
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "brick",
+          "amount": 4
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "tool_construction",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "brick",
+        "amount": 4
+      }
+    ],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "community",
+        "field": "road_broken",
+        "value": false
+      },
+      {
+        "op": "entity.set",
+        "entity": "road",
+        "field": "status",
+        "value": "available"
+      },
+      {
+        "op": "entity.set",
+        "entity": "material_yard",
+        "field": "reachable",
+        "value": true
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 180,
+    "event_policy": true,
+    "steps": 1
+  },
+  "build_wall": {
+    "id": "build_wall",
+    "label": "建设木屏障",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "wall",
+          "field": "status",
+          "cmp": "ne",
+          "value": "available"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "wood",
+          "amount": 6
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "wood",
+        "amount": 6
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "project_work",
+        "params": {
+          "target": "wall"
+        }
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 2
+  },
+  "build_gate": {
+    "id": "build_gate",
+    "label": "建设院门",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "gate",
+          "field": "status",
+          "cmp": "ne",
+          "value": "available"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "metal",
+          "amount": 6
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "metal",
+        "amount": 6
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "project_work",
+        "params": {
+          "target": "gate"
+        }
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 3
+  },
+  "build_power_unit": {
+    "id": "build_power_unit",
+    "label": "启用发电机",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "generator",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "project_work",
+        "params": {
+          "target": "power_unit"
+        }
+      },
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "power",
+        "value": true
+      },
+      {
+        "op": "world.resolve",
+        "resolver_id": "source_resolved",
+        "params": {}
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 0,
+    "event_policy": true,
+    "steps": 3
+  },
+  "repair_home_power": {
+    "id": "repair_home_power",
+    "label": "修复住宅供电线路",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "home",
+          "field": "power",
+          "cmp": "eq",
+          "value": false
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "metal",
+          "amount": 10
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "metal",
+        "amount": 10
+      }
+    ],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "home",
+        "field": "power",
+        "value": true
+      },
+      {
+        "op": "entity.set",
+        "entity": "power_unit",
+        "field": "status",
+        "value": "unbuilt"
+      },
+      {
+        "op": "world.resolve",
+        "resolver_id": "source_resolved",
+        "params": {}
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "build_camera": {
+    "id": "build_camera",
+    "label": "启用监控",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "camera",
+          "field": "status",
+          "cmp": "eq",
+          "value": "unbuilt"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "camera_kit",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.transfer",
+        "item_id": "camera_kit",
+        "amount": 1,
+        "from": "home",
+        "to": "installed:camera"
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "project_work",
+        "params": {
+          "target": "camera"
+        }
+      }
+    ],
+    "stamina_units": 0,
+    "duration_minutes": 0,
+    "event_policy": true,
+    "steps": 2
+  },
+  "build_trap": {
+    "id": "build_trap",
+    "label": "建设院边阻拦陷阱",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "trap",
+          "field": "status",
+          "cmp": "eq",
+          "value": "unbuilt"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "wood",
+          "amount": 3
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "wood",
+        "amount": 3
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "project_work",
+        "params": {
+          "target": "trap"
+        }
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  },
+  "build_warehouse": {
+    "id": "build_warehouse",
+    "label": "建设公共仓点",
+    "requires": {
+      "all": [
+        {
+          "op": "field_compare",
+          "entity": "player",
+          "field": "location",
+          "cmp": "eq",
+          "value": "home"
+        },
+        {
+          "op": "field_compare",
+          "entity": "warehouse",
+          "field": "status",
+          "cmp": "eq",
+          "value": "unbuilt"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "wood",
+          "amount": 6
+        }
+      ]
+    },
+    "costs": [
+      {
+        "op": "inventory.consume",
+        "holder": "home",
+        "item_id": "wood",
+        "amount": 6
+      }
+    ],
+    "effects": [
+      {
+        "op": "world.resolve",
+        "resolver_id": "project_work",
+        "params": {
+          "target": "warehouse"
+        }
+      },
+      {
+        "op": "entity.set",
+        "entity": "community",
+        "field": "active",
+        "value": true
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 3
+  },
+  "open_weapon_cache": {
+    "id": "open_weapon_cache",
+    "label": "撬开民居锁柜",
+    "requires": {
+      "all": [
+        {
+          "op": "at_location",
+          "entity": "player",
+          "location": "residence"
+        },
+        {
+          "op": "field_compare",
+          "entity": "weapon_cache",
+          "field": "status",
+          "cmp": "eq",
+          "value": "closed"
+        },
+        {
+          "op": "inventory_at_least",
+          "holder": "home",
+          "item_id": "crowbar",
+          "amount": 1
+        }
+      ]
+    },
+    "costs": [],
+    "effects": [
+      {
+        "op": "entity.set",
+        "entity": "weapon_cache",
+        "field": "status",
+        "value": "open"
+      }
+    ],
+    "stamina_units": 100,
+    "duration_minutes": 120,
+    "event_policy": true,
+    "steps": 1
+  }
+}

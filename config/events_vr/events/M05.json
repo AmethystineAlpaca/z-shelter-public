@@ -1,0 +1,56 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M05",
+  "title": "院边先加固哪一处",
+  "summary": "你站在院里，量了量门前那段空地。这里能搭一道木屏障，也能装一扇院门。真遇上来袭，它们可以先承受冲撞。",
+  "tags": [
+    "shelter",
+    "middle",
+    "neutral"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "plan_build_wall",
+      "label": "建设木屏障",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "wood", "amount": 6}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_wall"
+        }
+      ],
+      "result_text": "你用六份木料撑起门前的屏障，把松动处逐一钉牢。退开两步看了看，屏障已经稳稳立住。"
+    },
+    {
+      "id": "plan_build_gate",
+      "label": "建设院门",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "metal", "amount": 6}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_gate"
+        }
+      ],
+      "result_text": "六份金属材料拼成了一道院门。你试着开合几次，最后落下门栓。"
+    },
+    {
+      "id": "leave",
+      "label": "保留材料，暂不施工",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你收起量尺寸的绳子，暂时没动材料。院子还是原来的样子，门前也还没有新的阻挡。"
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "entities": {
+    "player": {
+      "alive": true,
+      "location": "home",
+      "status": "available",
+      "morale": 60,
+      "armed": false,
+      "injury": false,
+      "first_aid": false,
+      "mechanical": false,
+      "electrical": false,
+      "construction": false,
+      "base_stamina": 300
+    },
+    "home": {
+      "alive": true,
+      "location": "home",
+      "status": "available",
+      "water": true,
+      "power": true,
+      "back_exit": true,
+      "lights": true,
+      "drained": false,
+      "high_storage": false,
+      "underground": false,
+      "surveyed": false,
+      "noise": 0,
+      "name": "住宅",
+      "known": true,
+      "reachable": true
+    },
+    "lin": {
+      "alive": true,
+      "location": "neighbor",
+      "status": "available",
+      "name": "林禾",
+      "known": true,
+      "contact": true,
+      "needs_wood": true,
+      "minor_damage": true,
+      "helped": false
+    },
+    "zhou": {
+      "alive": true,
+      "location": "road",
+      "status": "available",
+      "name": "周岚",
+      "known": false,
+      "contact": true,
+      "traded": false,
+      "regular": false
+    },
+    "chen": {
+      "alive": true,
+      "location": "road",
+      "status": "available",
+      "name": "陈工",
+      "known": false,
+      "contact": true,
+      "stay_until": 0,
+      "permanent": false
+    },
+    "cen": {
+      "alive": true,
+      "location": "repair_shop",
+      "status": "available",
+      "name": "阿岑",
+      "known": false,
+      "contact": true
+    },
+    "xu": {
+      "alive": true,
+      "location": "clinic",
+      "status": "available",
+      "name": "许医生",
+      "known": true,
+      "contact": true,
+      "service": false
+    },
+    "guest": {
+      "alive": true,
+      "location": "road",
+      "status": "available",
+      "name": "避难住户",
+      "known": false,
+      "contact": true,
+      "stay_until": 0,
+      "permanent": false
+    },
+    "car": {
+      "alive": true,
+      "location": "repair_shop",
+      "status": "broken",
+      "progress": 0,
+      "owned": false,
+      "fuel": 0
+    },
+    "community": {
+      "alive": true,
+      "location": "home",
+      "status": "available",
+      "active": false,
+      "policy": "loose",
+      "shortage": false,
+      "road_broken": true
+    },
+    "power_unit": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt",
+      "fuel": 0
+    },
+    "camera": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "tower": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "shelter": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "trap": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "wall": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "gate": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "waterworks": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "clinic_room": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "warehouse": {
+      "alive": true,
+      "location": "home",
+      "status": "unbuilt"
+    },
+    "road": {
+      "alive": true,
+      "location": "home",
+      "status": "blocked"
+    },
+    "parcel": {
+      "alive": true,
+      "location": "home",
+      "status": "unclaimed"
+    },
+    "radio_message": {
+      "alive": true,
+      "location": "home",
+      "status": "unread"
+    },
+    "footprints": {
+      "alive": true,
+      "location": "home",
+      "status": "new"
+    },
+    "weapon_cache": {
+      "alive": true,
+      "location": "residence",
+      "status": "closed"
+    },
+    "cart_found": {
+      "alive": true,
+      "location": "store",
+      "status": "unclaimed"
+    },
+    "raiders": {
+      "alive": true,
+      "location": "road",
+      "status": "available",
+      "truce_until": 0
+    },
+    "store": {
+      "alive": true,
+      "location": "store",
+      "status": "available",
+      "name": "便利店",
+      "known": true,
+      "reachable": true
+    },
+    "hardware": {
+      "alive": true,
+      "location": "hardware",
+      "status": "available",
+      "name": "五金店",
+      "known": true,
+      "reachable": true
+    },
+    "repair_shop": {
+      "alive": true,
+      "location": "repair_shop",
+      "status": "available",
+      "name": "维修站",
+      "known": true,
+      "reachable": true
+    },
+    "material_yard": {
+      "alive": true,
+      "location": "material_yard",
+      "status": "available",
+      "name": "建材场",
+      "known": true,
+      "reachable": false
+    },
+    "electronics": {
+      "alive": true,
+      "location": "electronics",
+      "status": "available",
+      "name": "电器仓",
+      "known": true,
+      "reachable": true
+    },
+    "clinic": {
+      "alive": true,
+      "location": "clinic",
+      "status": "available",
+      "name": "诊所",
+      "known": true,
+      "reachable": true
+    },
+    "garden_shop": {
+      "alive": true,
+      "location": "garden_shop",
+      "status": "available",
+      "name": "园艺店",
+      "known": true,
+      "reachable": true
+    },
+    "residence": {
+      "alive": true,
+      "location": "residence",
+      "status": "available",
+      "name": "邻近民居",
+      "known": true,
+      "reachable": true
+    },
+    "neighbor": {
+      "alive": true,
+      "location": "neighbor",
+      "status": "available",
+      "name": "邻屋",
+      "known": true,
+      "reachable": true
+    },
+    "refuge": {
+      "alive": true,
+      "location": "refuge",
+      "status": "available",
+      "name": "巷尾落脚处",
+      "known": true,
+      "reachable": true
+    },
+    "garden": {
+      "alive": true,
+      "location": "home",
+      "status": "empty",
+      "mature_tick": 0,
+      "seed_id": ""
+    }
+  },
+  "inventories": {
+    "home": {
+      "tool_basic": 1
+    },
+    "trip_cargo": {},
+    "hands": {},
+    "lin": {
+      "wood": 2,
+      "food_preserved": 12,
+      "shovel": 1
+    },
+    "zhou": {
+      "wood": 12,
+      "food_preserved": 10,
+      "gasoline": 6,
+      "seed": 4
+    },
+    "chen": {
+      "food_preserved": 8,
+      "tool_construction": 1,
+      "metal": 8
+    },
+    "cen": {
+      "food_preserved": 8,
+      "shovel": 1
+    },
+    "xu": {
+      "bandage": 8
+    },
+    "guest": {},
+    "store": {
+      "food_preserved": 38,
+      "bandage": 4,
+      "water_clean": 1,
+      "gasoline": 6,
+      "wood": 6,
+      "cart": 1,
+      "seed": 4
+    },
+    "hardware": {
+      "wood": 40,
+      "metal": 16,
+      "shovel": 1,
+      "crowbar": 1,
+      "tool_construction": 1,
+      "brick": 12
+    },
+    "repair_shop": {
+      "gasoline": 12,
+      "fuel_container": 2,
+      "tool_basic": 1,
+      "metal": 16,
+      "shovel": 1
+    },
+    "material_yard": {
+      "brick": 36,
+      "wood": 24,
+      "metal": 8
+    },
+    "electronics": {
+      "generator": 1,
+      "camera_kit": 1,
+      "metal": 12
+    },
+    "clinic": {
+      "bandage": 12
+    },
+    "garden_shop": {
+      "seed": 12,
+      "shovel": 1
+    },
+    "residence": {
+      "firearm": 1,
+      "ammo": 6,
+      "food_fresh": 4,
+      "food_preserved": 4
+    },
+    "pipeline": {},
+    "rainwater": {},
+    "garden": {},
+    "community": {},
+    "car": {},
+    "guest_supply": {},
+    "installed": {},
+    "refuge": {}
+  },
+  "locations": {
+    "store": "便利店",
+    "hardware": "五金店",
+    "repair_shop": "维修站",
+    "material_yard": "建材场",
+    "electronics": "电器仓",
+    "clinic": "诊所",
+    "garden_shop": "园艺店",
+    "residence": "邻近民居",
+    "neighbor": "邻屋",
+    "refuge": "巷尾落脚处",
+    "home": "住宅"
+  },
+  "scavenge_profiles": {
+    "store": {
+      "draws": 3,
+      "items": [
+        {
+          "item_id": "food_preserved",
+          "weight": 12,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "bandage",
+          "weight": 2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "item_id": "water_clean",
+          "weight": 8,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "item_id": "gasoline",
+          "weight": 6,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "wood",
+          "weight": 2,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "seed",
+          "weight": 2,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    },
+    "hardware": {
+      "draws": 2,
+      "items": [
+        {
+          "item_id": "wood",
+          "weight": 6,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "item_id": "metal",
+          "weight": 3,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "brick",
+          "weight": 4,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    },
+    "repair_shop": {
+      "draws": 1,
+      "items": [
+        {
+          "item_id": "metal",
+          "weight": 5,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "fuel_container",
+          "weight": 5,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "item_id": "tool_basic",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        }
+      ]
+    },
+    "material_yard": {
+      "draws": 2,
+      "items": [
+        {
+          "item_id": "wood",
+          "weight": 5,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "item_id": "brick",
+          "weight": 4,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "metal",
+          "weight": 3,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    },
+    "electronics": {
+      "draws": 2,
+      "items": [
+        {
+          "item_id": "metal",
+          "weight": 5,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    },
+    "clinic": {
+      "draws": 2,
+      "items": [
+        {
+          "item_id": "bandage",
+          "weight": 5,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    },
+    "garden_shop": {
+      "draws": 2,
+      "items": [
+        {
+          "item_id": "seed",
+          "weight": 4,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    },
+    "residence": {
+      "draws": 2,
+      "items": [
+        {
+          "item_id": "food_fresh",
+          "weight": 4,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "item_id": "food_preserved",
+          "weight": 3,
+          "min": 1,
+          "max": 2
+        }
+      ]
+    }
+  },
+  "initial_sources": [],
+  "limitations": [
+    "尚未实现：多角色并行排班、复杂运输委托及分工合同；相关选项暂不开放。",
+    "尚未实现：鲜食逐批腐坏、连续设备耗能和复杂病程；当前食品与设备测试不代表这些系统已经完成。",
+    "待补素材：花园、院墙、设备、人物到访、道路与临时落脚处的场景图和音效。现阶段以文字状态为准。",
+    "尚未实现：电钻减耗、训练成长和多角色劳动预算；当前支持主角整数单位体力及事件次日修正。",
+    "尚未实现：液体/食品逐批容器与保质期账；目前使用按持有位置的总量和容器容量校验。",
+    "尚未实现：精确时刻的并发危机合并；当前有限日界与行动完成点处理已登记来源。",
+    "尚未实现：未来计划的并发资源预订与暂停恢复；当前计划在实际执行每个工序时重验，已投入材料与进度保留。"
+  ]
+}

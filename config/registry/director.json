@@ -1,0 +1,205 @@
+{
+  "parameters": {
+    "day_transition_chance_bp": 3000,
+    "outing_chance_bp": 1500,
+    "max_attempts": 8,
+    "dead_end_keep_bp": 2000,
+    "weights": {
+      "high": 8,
+      "medium": 4,
+      "low": 2,
+      "rare": 1
+    },
+    "max_random_gap_days": 3,
+    "pity_fallback_event": "R01"
+  },
+  "source_rules": [
+    {
+      "id": "E02",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "water",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "E03",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "power",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "E07",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "entries.door",
+        "field": "hp",
+        "cmp": "gt",
+        "value": 0
+      }
+    },
+    {
+      "id": "E14",
+      "weight": 2,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "back_exit",
+        "cmp": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "E10",
+      "weight": 4,
+      "requires": {
+        "op": "field_compare",
+        "entity": "home",
+        "field": "drained",
+        "cmp": "eq",
+        "value": false
+      }
+    },
+    {
+      "id": "M07",
+      "weight": 2,
+      "requires": {
+        "all": []
+      }
+    },
+    {
+      "id": "M08",
+      "weight": 2,
+      "requires": {
+        "all": []
+      }
+    },
+    {
+      "id": "L05",
+      "weight": 2,
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "power_unit",
+            "field": "status",
+            "cmp": "eq",
+            "value": "available"
+          },
+          {
+            "op": "field_compare",
+            "entity": "home",
+            "field": "power",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "home",
+            "item_id": "generator",
+            "amount": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "L08",
+      "weight": 2,
+      "requires": {
+        "all": [
+          {
+            "op": "field_compare",
+            "entity": "player",
+            "field": "location",
+            "cmp": "eq",
+            "value": "home"
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "active",
+            "cmp": "eq",
+            "value": true
+          },
+          {
+            "op": "field_compare",
+            "entity": "community",
+            "field": "policy",
+            "cmp": "eq",
+            "value": "rota"
+          },
+          {
+            "not": {
+              "op": "inventory_at_least",
+              "holder": "community",
+              "item_id": "food_preserved",
+              "amount": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "M17",
+      "weight": 1,
+      "requires": {
+        "all": [
+          {
+            "all": [
+              {
+                "op": "field_compare",
+                "entity": "camera",
+                "field": "status",
+                "cmp": "eq",
+                "value": "available"
+              },
+              {
+                "op": "field_compare",
+                "entity": "home",
+                "field": "power",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "op": "field_compare",
+                "entity": "zhou",
+                "field": "known",
+                "cmp": "eq",
+                "value": true
+              },
+              {
+                "op": "field_compare",
+                "entity": "zhou",
+                "field": "alive",
+                "cmp": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "inventory_at_least",
+            "holder": "zhou",
+            "item_id": "wood",
+            "amount": 2
+          }
+        ]
+      }
+    }
+  ]
+}

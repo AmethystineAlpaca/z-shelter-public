@@ -1,0 +1,132 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "X01",
+  "title": "门外传来撞击声",
+  "summary": "一声沉重的撞击让整扇门都震了起来。你从窗帘缝里看见一个游荡者贴在门外，它闻到了屋里的活人气息，正用肩膀一下下顶撞门板。木屑已经从门框边缘落下来。",
+  "tags": [
+    "shelter",
+    "cross",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "brace",
+      "label": "依靠现成防御阻拦",
+      "description": "靠现有防护挡住来袭。用上的设施会损坏，街坊若来支援会吃掉一份公共口粮。",
+      "prerequisite": {
+        "any": [
+          {"selected": {"event_id": "M05", "choice_id": "plan_build_wall"}},
+          {"selected": {"event_id": "M05", "choice_id": "plan_build_gate"}},
+          {"selected": {"event_id": "M07", "choice_id": "plan_build_wall"}},
+          {"selected": {"event_id": "M07", "choice_id": "plan_build_trap"}},
+          {"selected": {"event_id": "E06", "choice_id": "plan_build_trap"}}
+        ]
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "brace",
+          "params": {}
+        }
+      ],
+      "result_text": "你守住屋内，让门前的阻挡先承受冲撞。外面的动静持续了一阵，终于渐渐退远。"
+    },
+    {
+      "id": "take_weapon",
+      "label": "去取存放的枪",
+      "description": "转身取枪会给门外的东西撞开房门的时间，随后进入 X02。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "hands",
+          "resource_id": "firearm",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "player",
+          "field": "armed",
+          "value": true
+        },
+        {
+          "type": "state.set",
+          "target": "entry.door",
+          "field": "hp",
+          "value": 0
+        },
+        {
+          "type": "state.set",
+          "target": "entry.door",
+          "field": "guard",
+          "value": 0
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "stage",
+          "value": "breached"
+        }
+      ],
+      "result_text": "你刚抓到枪，身后就传来门闩断裂的声音。那个东西已经踩着碎木挤进玄关。"
+    },
+    {
+      "id": "shoot",
+      "label": "用枪清除眼前威胁",
+      "description": "消耗一发弹药，能击倒落单的游荡者；无法独自解决成群来袭。",
+      "prerequisite": {
+        "all": [
+          {"selected": {"event_id": "M09", "choice_id": "take"}},
+          {"inventory_at_least": {"holder": "home", "item_id": "ammo", "amount": 1}}
+        ]
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "shoot",
+          "params": {}
+        }
+      ],
+      "result_text": "枪声在屋里震了一下。那只游荡者倒了下去，你仍举着枪，等到它彻底不动。"
+    },
+    {
+      "id": "escape",
+      "label": "从后门绕开它",
+      "description": "先躲到巷尾，等动静远去后再回屋；入口损伤仍会保留。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "escape",
+          "params": {}
+        }
+      ],
+      "result_text": "你从后门退进巷子，躲开了正面的来袭。"
+    },
+    {
+      "id": "fight_barehand",
+      "label": "徒手硬抗",
+      "description": "赤手空拳迎上去毫无胜算，这会要了你的命。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "player",
+          "field": "alive",
+          "value": false
+        }
+      ],
+      "result_text": "你迎了上去，很快就被撞倒。伸出去的手再也没能抓住门框。"
+    }
+  ]
+}

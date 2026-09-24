@@ -1,0 +1,45 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "R02",
+  "title": "暴雨到了",
+  "summary": "预报里的暴雨如期到了。雨后检查发现，低处的口粮和花园里正在培育的快速土豆是否保住，取决于此前做好的准备。",
+  "tags": [
+    "shelter",
+    "consequence",
+    "weather"
+  ],
+  "trigger": {
+    "any": [
+      {
+        "selected": {
+          "event_id": "E10",
+          "choice_id": "plan_drain"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E10",
+          "choice_id": "plan_move_high"
+        }
+      },
+      {
+        "selected": {
+          "event_id": "E10",
+          "choice_id": "leave"
+        }
+      }
+    ]
+  },
+  "choices": [
+    {
+      "id": "acknowledge",
+      "label": "查看雨后的屋况",
+      "description": "查看雨后的屋况，确认口粮、后门和花园里正在培育的快速土豆是否受损。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "暴雨如期到了。你沿屋内、后门和花园检查了一遍，确认各处实际损失与此前做的排水准备。"
+    }
+  ]
+}

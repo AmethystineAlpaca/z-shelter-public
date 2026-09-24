@@ -1,0 +1,47 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L06",
+  "title": "修好通往外面的那段路",
+  "summary": "通往建材场的小路塌了一角。林禾领你看过缺口，说垫进四份砖块，再用施工工具夯实，就能重新通行。五金店里还有找砖的希望。",
+  "tags": [
+    "shelter",
+    "late",
+    "positive"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "L01",
+      "choice_id": "build_hub"
+    }
+  },
+  "choices": [
+    {
+      "id": "repair_road",
+      "label": "用四份砖块补好路面",
+      "description": "用掉砖块 4，施工工具保留；修好后可去建材场搜刮。",
+      "prerequisite": {
+        "all": [
+          {"inventory_at_least": {"holder": "home", "item_id": "brick", "amount": 4}},
+          {"inventory_at_least": {"holder": "home", "item_id": "tool_construction", "amount": 1}}
+        ]
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "repair_road"
+        }
+      ],
+      "result_text": "你把四份砖填进缺口，用施工工具逐一压实。脚踩上去，路面没有再塌。通往建材场的小路终于能走了；工具还可以带回去接着用。"
+    },
+    {
+      "id": "leave",
+      "label": "这次不参加",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你看了看缺口，把工具收了起来。这段路先留着，去建材场的打算也只能往后放。"
+    }
+  ]
+}

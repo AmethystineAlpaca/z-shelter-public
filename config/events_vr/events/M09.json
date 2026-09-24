@@ -1,0 +1,61 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M09",
+  "title": "锁柜里的武器",
+  "summary": "卧室衣柜后藏着一只上锁的铁柜。你从缝里看见一把枪和六发匹配的弹药；锁很结实，没有撬棍打不开，这一趟的搬运余量也有限。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "take",
+      "label": "带武器与现有六发弹药",
+      "description": "负载 9；需要撬棍。",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "crowbar", "amount": 1}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "open_weapon_cache"
+        },
+        {
+          "type": "resource.transfer",
+          "from": "residence",
+          "to": "trip_cargo",
+          "resource_id": "firearm",
+          "amount": 1
+        },
+        {
+          "type": "resource.transfer",
+          "from": "residence",
+          "to": "trip_cargo",
+          "resource_id": "ammo",
+          "amount": 6
+        },
+        {
+          "type": "state.set",
+          "target": "weapon_cache",
+          "field": "status",
+          "value": "open"
+        }
+      ],
+      "result_text": "锁终于被撬开。你拿出枪，把六发弹药一并收好，重新扎紧行李。"
+    },
+    {
+      "id": "mark",
+      "label": "不打开柜子",
+      "description": "枪和弹药都留在原处。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你松开铁柜的把手，没有再碰锁。枪和弹药留在柜里，这趟仍带着原先的行李离开。"
+    }
+  ]
+}

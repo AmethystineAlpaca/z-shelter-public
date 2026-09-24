@@ -1,0 +1,54 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M02",
+  "title": "阿岑多余的铲子",
+  "summary": "阿岑从墙边拿起一把铲子，拍掉上面的灰。他说这是多出来的，想拿它换两份耐储食品。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "M01",
+      "choice_id": "salvage"
+    }
+  },
+  "choices": [
+    {
+      "id": "trade",
+      "label": "食物 2 换铲子 1",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "cen",
+          "resource_id": "food_preserved",
+          "amount": 2
+        },
+        {
+          "type": "resource.transfer",
+          "from": "cen",
+          "to": "trip_cargo",
+          "resource_id": "shovel",
+          "amount": 1
+        }
+      ],
+      "result_text": "两份口粮换来一把铲子。你握着铲柄试了试，接过来放进行李。"
+    },
+    {
+      "id": "leave",
+      "label": "保留口粮",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你摸了摸行李的绑绳，说还是先留着口粮。阿岑把铲子靠回墙边，没有再劝。"
+    }
+  ]
+}

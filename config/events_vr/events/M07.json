@@ -1,0 +1,56 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M07",
+  "title": "五天后经过的尸群",
+  "summary": "带来消息的人一路跑得上气不接下气：一群尸体正沿公路缓慢移动，照现在的方向，五天后就会穿过这个街区。它们还没到，但留给你的准备时间已经开始减少。",
+  "tags": [
+    "shelter",
+    "middle",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "plan_build_wall",
+      "label": "建设木屏障",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "wood", "amount": 6}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_wall"
+        }
+      ],
+      "result_text": "你用六份木料撑起门前的屏障，把松动处逐一钉牢。往后有成群的东西逼近，它能替门口多承受几次冲撞。 想到五天后要来的尸群，你又检查了一遍旁边还能补什么。"
+    },
+    {
+      "id": "plan_build_trap",
+      "label": "用三份木料建设陷阱",
+      "description": "",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "wood", "amount": 3}
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_trap"
+        }
+      ],
+      "result_text": "你用三份木料在院边搭好阻拦陷阱，试了试卡扣。下次有东西从这里冲来，它能先挡一下；触发过后得重新布置。 想到五天后要来的尸群，你又检查了一遍旁边还能补什么。"
+    },
+    {
+      "id": "leave",
+      "label": "暂不施工，留待之后准备",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你把消息记在心里，今天没有开工。五天后那群东西仍会经过这里；在那之前，门前的防护和后门的退路都得再看一遍。"
+    }
+  ]
+}

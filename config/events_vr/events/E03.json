@@ -1,0 +1,77 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E03",
+  "title": "屋里的灯熄了",
+  "summary": "屋里的灯突然熄了，插座也没了电。你摸到桌边，看了一眼放备用设备的角落。夜里的屋子一下显得很深。",
+  "tags": [
+    "shelter",
+    "early",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "start_generator",
+      "label": "启用发电机",
+      "description": "库存中有发电机即可使用；启用后恢复住宅供电。",
+      "prerequisite": {
+        "inventory_at_least": {
+          "holder": "home",
+          "item_id": "generator",
+          "amount": 1
+        }
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "build_power_unit"
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你启动库存中的发电机，屋里的灯重新亮起来。发电机仍计在库存中，供电期间可能发生故障。"
+    },
+    {
+      "id": "repair_wiring",
+      "label": "用 10 份金属料修好住宅供电",
+      "description": "消耗金属料 10 份，直接修复住宅线路；不会启用发电机。",
+      "prerequisite": {
+        "inventory_at_least": {"holder": "home", "item_id": "metal", "amount": 10}
+      },
+      "effects": [
+        {"type": "action.execute", "action_id": "repair_home_power"},
+        {"type": "state.set", "target": "$source", "field": "status", "value": "resolved"}
+      ],
+      "result_text": "你用手边的工具重新接好并检查了住宅线路，供电恢复正常。备用发电机仍留在原处。"
+    },
+    {
+      "id": "leave",
+      "label": "暂时维持现状",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "home",
+          "field": "power",
+          "value": false
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你放下手里的插头，借着窗外的微光回到桌边。今晚先这样过，电源的事留待之后处理。"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E04",
+  "title": "五金店的后间",
+  "summary": "五金店后间的门虚掩着。灰尘下露出一根撬棍，墙边还码着干燥的木料。你掂了掂已经装好的行李，剩下的地方不多了。",
+  "tags": [
+    "shelter",
+    "early",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "tool",
+      "label": "带上撬棍",
+      "description": "带走一把撬棍。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "hardware",
+          "to": "trip_cargo",
+          "resource_id": "crowbar",
+          "amount": 1
+        }
+      ],
+      "result_text": "你擦掉撬棍上的灰，把它系进行李，确认走动时不会滑出来。"
+    },
+    {
+      "id": "materials",
+      "label": "带四份木料",
+      "description": "带走四份木料。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "hardware",
+          "to": "trip_cargo",
+          "resource_id": "wood",
+          "amount": 4
+        }
+      ],
+      "result_text": "你挑出四份干燥的木料，捆紧后带上。"
+    },
+    {
+      "id": "mark",
+      "label": "这趟先不拿",
+      "description": "撬棍和木料留在五金店。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你把门轻轻带上，留下墙边的木料和撬棍。这趟先带好手里的东西。"
+    }
+  ]
+}

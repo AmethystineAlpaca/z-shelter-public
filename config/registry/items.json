@@ -1,0 +1,154 @@
+{
+  "food_preserved": {
+    "name": "耐储食品",
+    "pack": 4,
+    "price": 8,
+    "stock": 4,
+    "load": 1,
+    "large_slots": 0
+  },
+  "food_fresh": {
+    "name": "新鲜食物",
+    "pack": 2,
+    "price": 3,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0
+  },
+  "water_clean": {
+    "name": "备用水",
+    "pack": 1,
+    "price": 4,
+    "stock": 1,
+    "load": 1,
+    "large_slots": 0
+  },
+  "wood": {
+    "name": "木料",
+    "pack": 4,
+    "price": 8,
+    "stock": 5,
+    "load": 1,
+    "large_slots": 0
+  },
+  "brick": {
+    "name": "砖块",
+    "pack": 6,
+    "price": 12,
+    "stock": 4,
+    "load": 1,
+    "large_slots": 0
+  },
+  "metal": {
+    "name": "金属料",
+    "pack": 2,
+    "price": 8,
+    "stock": 4,
+    "load": 1,
+    "large_slots": 0
+  },
+  "gasoline": {
+    "name": "汽油",
+    "pack": 2,
+    "price": 6,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0
+  },
+  "bandage": {
+    "name": "绷带",
+    "pack": 2,
+    "price": 4,
+    "stock": 3,
+    "load": 1,
+    "large_slots": 0
+  },
+  "seed": {
+    "name": "快速土豆种子",
+    "pack": 2,
+    "price": 4,
+    "stock": 2,
+    "load": 1,
+    "large_slots": 0
+  },
+  "tool_basic": {
+    "name": "基础手工具",
+    "pack": 1,
+    "price": 8,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0
+  },
+  "crowbar": {
+    "name": "撬棍",
+    "pack": 1,
+    "price": 8,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0
+  },
+  "shovel": {
+    "name": "铲子",
+    "pack": 1,
+    "price": 8,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0
+  },
+  "tool_construction": {
+    "name": "施工工具",
+    "pack": 1,
+    "price": 20,
+    "stock": 1,
+    "load": 3,
+    "large_slots": 0
+  },
+  "fuel_container": {
+    "name": "燃油桶（6升）",
+    "pack": 1,
+    "price": 8,
+    "stock": 1,
+    "load": 2,
+    "large_slots": 0
+  },
+  "cart": {
+    "name": "手推车",
+    "pack": 1,
+    "price": 20,
+    "stock": 1,
+    "load": 6,
+    "large_slots": 0
+  },
+  "generator": {
+    "name": "发电机",
+    "pack": 1,
+    "price": 55,
+    "stock": 1,
+    "load": 30,
+    "large_slots": 1
+  },
+  "camera_kit": {
+    "name": "监控套件",
+    "pack": 1,
+    "price": 30,
+    "stock": 1,
+    "load": 8,
+    "large_slots": 0
+  },
+  "firearm": {
+    "name": "枪械",
+    "pack": 1,
+    "price": 0,
+    "stock": 0,
+    "load": 3,
+    "large_slots": 0
+  },
+  "ammo": {
+    "name": "适配弹药",
+    "pack": 1,
+    "price": 0,
+    "stock": 0,
+    "load": 1,
+    "large_slots": 0
+  }
+}

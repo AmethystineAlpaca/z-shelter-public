@@ -1,0 +1,37 @@
+Z Shelter — READ THIS FIRST: How to open on macOS
+================================================
+
+No Godot installation, Terminal commands, or development tools are needed.
+
+1. Extract the entire ZIP. Move Z Shelter.app to Applications or another
+   folder you own, then double-click the app.
+2. This public prototype build is ad-hoc signed but NOT Apple-notarized.
+   On first launch, macOS may say that Apple cannot verify whether
+   “Z Shelter” contains malware, with “Done” and “Move to Trash” buttons.
+3. If you downloaded this build from our official GitHub release and trust
+   its source, click “Done”, not “Move to Trash”.
+4. Open System Settings → Privacy & Security. Scroll down to the notice
+   that Z Shelter was blocked, and click “Open Anyway”.
+5. Authenticate if prompted, then click “Open” in the confirmation dialog.
+   macOS normally remembers this exception for this copy of the app.
+
+If “Open Anyway” is missing, try opening the app once more, then return to
+Privacy & Security. A managed Mac may require help from its administrator.
+Do not disable Gatekeeper globally or run commands to turn off Mac security.
+This procedure is for the unverified-app warning above. If macOS says the
+app is damaged or will harm your computer, stop and report the exact message.
+
+Once the title screen opens, choose “Begin a new journal”. Use English / 中文
+at the top right to change language; the preference is saved. The optional
+tutorial explains preparation shopping and the first survival days.
+
+Currently supplied for macOS, with Apple Silicon and Intel executables.
+This is a free public prototype. Game source remains private.
+
+Apple's opening instructions:
+https://support.apple.com/en-us/102445
+
+Public prototype download:
+https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4
+
+中文说明见同一文件夹中的「START-HERE-Chinese.txt」。

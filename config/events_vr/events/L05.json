@@ -1,0 +1,69 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L05",
+  "title": "备用电源撑不住了",
+  "summary": "正在运转的备用发电机突然发出异响。检查后发现固定接线的金属卡扣松裂，必须马上处理，否则机器会彻底烧毁。",
+  "tags": [
+    "shelter",
+    "late",
+    "negative"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "repair_power",
+      "label": "用一份金属材料修复发电机卡扣",
+      "description": "消耗金属材料 1，并需要基础工具 1 套；工具保留，修好后继续供电。",
+      "prerequisite": {
+        "all": [
+          {"inventory_at_least": {"holder": "home", "item_id": "metal", "amount": 1}},
+          {"inventory_at_least": {"holder": "home", "item_id": "tool_basic", "amount": 1}}
+        ]
+      },
+      "effects": [
+        {
+          "type": "action.execute",
+          "action_id": "repair_power_unit"
+        }
+      ],
+      "result_text": "你换好那枚裂开的金属卡扣，重新固定线路。备用发电机恢复运转，住宅继续供电。工具擦净后仍收在原处。"
+    },
+    {
+      "id": "leave",
+      "label": "不管它",
+      "description": "发电机会彻底烧毁，库存中的发电机减少 1 台，住宅随即断电。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "home",
+          "field": "power",
+          "value": false
+        },
+        {
+          "type": "resource.change",
+          "holder": "home",
+          "resource_id": "generator",
+          "delta": -1
+        },
+        {
+          "type": "state.set",
+          "target": "power_unit",
+          "field": "status",
+          "value": "unbuilt"
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你没有处理松裂的接线。备用发电机冒出火花，彻底烧毁了。库存中的发电机损失一台，屋里随即断电。"
+    }
+  ]
+}

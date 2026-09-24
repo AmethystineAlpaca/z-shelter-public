@@ -1,0 +1,98 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E01",
+  "title": "邻居的十份木料",
+  "summary": "天刚擦黑，林禾就在院墙外叫住了你。他家的窗板裂开一道大口子，冷风直往屋里灌。他抱着一把备用铲子，说只要能在三天内凑到十份木料，这把铲子就归你。",
+  "tags": [
+    "shelter",
+    "early",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "promise",
+      "label": "答应三天内送到",
+      "description": "三天后交齐十份木料完成交换；也可以当面说明未能做到。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "wood_promise",
+          "value": "pending"
+        }
+      ],
+      "result_text": "你答应三天内给出十份木料。林禾把铲子留在自己手里，约好期限到了再完成交换。"
+    },
+    {
+      "id": "exchange",
+      "label": "现在交换",
+      "description": "木料 10 换林禾的铲子 1。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "lin",
+          "resource_id": "wood",
+          "amount": 10
+        },
+        {
+          "type": "resource.transfer",
+          "from": "lin",
+          "to": "home",
+          "resource_id": "shovel",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "helped",
+          "value": true
+        }
+      ],
+      "result_text": "你把十份木料交给林禾，接过他的铲子。他试了试木料的厚度，说这下终于能堵住窗上的破口了。"
+    },
+    {
+      "id": "gift",
+      "label": "只送他两份木料",
+      "description": "送出木料 2，不换取铲子。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "lin",
+          "resource_id": "wood",
+          "amount": 2
+        },
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "helped",
+          "value": true
+        }
+      ],
+      "result_text": "你递出两份木料，说眼下只能帮这么多。林禾接过去，认真地向你道了谢，没再提交换铲子的事。"
+    },
+    {
+      "id": "leave",
+      "label": "这次帮不上",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说这次实在帮不上。林禾垂眼看了看手里的铲子，点点头，独自走了。你在门边站了一会儿，最终还是关上门，去清点自己那点材料。"
+    }
+  ]
+}

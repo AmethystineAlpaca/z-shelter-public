@@ -1,0 +1,52 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "M06",
+  "title": "陈工用工具换五天食宿",
+  "summary": "陈工背着工具包来到门前，想找个地方安稳住五天。他愿意留下手里的施工工具作报酬，只求一张床、五份饭和能洗漱的水。",
+  "tags": [
+    "shelter",
+    "middle",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "host",
+      "label": "只借住五天",
+      "description": "预存食物 5，并需要持有备用水；备用水不会随住宿天数消耗。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "start_stay",
+          "params": {
+            "npc": "chen",
+            "days": 5
+          }
+        },
+        {
+          "type": "resource.transfer",
+          "from": "chen",
+          "to": "home",
+          "resource_id": "tool_construction",
+          "amount": 1
+        }
+      ],
+      "result_text": "你腾出床位，给陈工留好五天的口粮。他把说好的施工工具交给你，在床边放下行李。你们又确认了一遍离开的日子。"
+    },
+    {
+      "id": "leave",
+      "label": "婉拒",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你说家里暂时接待不了。陈工重新背好工具包，道了声谢，去找别的落脚处。"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "E08",
+  "title": "门外的流动交易者",
+  "summary": "我听见门外有人报出名字：周岚。他退开几步，让我看清袋里的口粮和木料，说愿意按一份食物换两份木料。",
+  "tags": [
+    "shelter",
+    "early",
+    "positive"
+  ],
+  "trigger": {
+    "always": true
+  },
+  "choices": [
+    {
+      "id": "food_for_wood",
+      "label": "食物 1 换木料 2",
+      "description": "交出食物 1，换回木料 2。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "zhou",
+          "resource_id": "food_preserved",
+          "amount": 1
+        },
+        {
+          "type": "resource.transfer",
+          "from": "zhou",
+          "to": "home",
+          "resource_id": "wood",
+          "amount": 2
+        },
+        {
+          "type": "state.set",
+          "target": "zhou",
+          "field": "traded",
+          "value": true
+        },
+        {
+          "type": "state.set",
+          "target": "zhou",
+          "field": "known",
+          "value": true
+        }
+      ],
+      "result_text": "你递出一份食物，接过周岚的两份木料。他把口粮收进袋里，说和讲信用的人打交道省事。"
+    },
+    {
+      "id": "wood_for_food",
+      "label": "木料 2 换食物 1",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "zhou",
+          "resource_id": "wood",
+          "amount": 2
+        },
+        {
+          "type": "resource.transfer",
+          "from": "zhou",
+          "to": "home",
+          "resource_id": "food_preserved",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "zhou",
+          "field": "traded",
+          "value": true
+        },
+        {
+          "type": "state.set",
+          "target": "zhou",
+          "field": "known",
+          "value": true
+        }
+      ],
+      "result_text": "两份木料换来一份食物。周岚替你检查了一下封口，才把它放到你手上；这次交换做得很利索。"
+    },
+    {
+      "id": "leave",
+      "label": "今天不交易",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你摆摆手，说今天不换。周岚重新扎好货袋，向你告别。家里的口粮和木料，你决定先照原来的打算用。"
+    }
+  ]
+}

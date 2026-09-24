@@ -1,0 +1,97 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "X05",
+  "title": "三天约定到期",
+  "summary": "三天期限到了。林禾把铲子带到门边，等你给出最后答复：现在交齐十份木料完成交换，少送一些作为补偿，或者承认这次约定没有做到。",
+  "tags": [
+    "shelter",
+    "cross",
+    "neutral"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "E01",
+      "choice_id": "promise"
+    }
+  },
+  "choices": [
+    {
+      "id": "fulfill_promise",
+      "label": "交齐十份木料完成交换",
+      "description": "用十份木料换取林禾的铲子。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "lin",
+          "resource_id": "wood",
+          "amount": 10
+        },
+        {
+          "type": "resource.transfer",
+          "from": "lin",
+          "to": "home",
+          "resource_id": "shovel",
+          "amount": 1
+        },
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "wood_promise",
+          "value": "completed"
+        },
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "helped",
+          "value": true
+        }
+      ],
+      "result_text": "你把十份木料交给林禾。他清点无误后把铲子递过来，这个约定按时完成了。"
+    },
+    {
+      "id": "make_amends",
+      "label": "承认失约并补送物资",
+      "description": "把未完成的承诺变成一次代价明确的补偿。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "resource.transfer",
+          "from": "home",
+          "to": "lin",
+          "resource_id": "wood",
+          "amount": 2
+        },
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "wood_promise",
+          "value": "compensated"
+        }
+      ],
+      "result_text": "你把能凑出的物资送过去，没有为迟到找借口。林禾收下东西，但你们都知道这和按时做到并不一样。"
+    },
+    {
+      "id": "walk_away",
+      "label": "不再补救",
+      "description": "接受这段关系因此疏远。",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "state.set",
+          "target": "lin",
+          "field": "wood_promise",
+          "value": "broken"
+        }
+      ],
+      "result_text": "你没有再敲那扇门。未兑现的约定留在了两间屋子之间。"
+    }
+  ]
+}

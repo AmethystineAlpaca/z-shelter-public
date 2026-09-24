@@ -1,0 +1,51 @@
+{
+  "schema_version": "event-vr-1",
+  "id": "L09",
+  "title": "菜圃里这一批熟了",
+  "summary": "菜圃终于冒出一片成熟的颜色。叶子饱满，果实也压弯了枝头，再拖几天就会烂在地里；它们还长在土中，得真正去采下来才能吃。",
+  "tags": [
+    "shelter",
+    "late",
+    "positive"
+  ],
+  "trigger": {
+    "selected": {
+      "event_id": "M12",
+      "choice_id": "seeds"
+    }
+  },
+  "choices": [
+    {
+      "id": "plan_harvest",
+      "label": "采收这一批",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [
+        {
+          "type": "world.resolve",
+          "resolver_id": "harvest",
+          "params": {}
+        },
+        {
+          "type": "state.set",
+          "target": "$source",
+          "field": "status",
+          "value": "resolved"
+        }
+      ],
+      "result_text": "你把这一批成熟的作物逐一采下，带回屋里制成了可以保存的干粮。地里空了下来；下次播种还得另备种子。"
+    },
+    {
+      "id": "leave",
+      "label": "晚一点再收",
+      "description": "",
+      "prerequisite": {
+        "always": true
+      },
+      "effects": [],
+      "result_text": "你没有下地，先回屋去。成熟的作物还挂在枝上，过了这三天，就只能眼看着它们烂掉。"
+    }
+  ]
+}
