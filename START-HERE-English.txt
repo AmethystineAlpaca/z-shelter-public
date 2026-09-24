@@ -8,7 +8,7 @@ No Godot installation, Terminal commands, or development tools are needed.
 2. This public prototype build is ad-hoc signed but NOT Apple-notarized.
    On first launch, macOS may say that Apple cannot verify whether
    “Z Shelter” contains malware, with “Done” and “Move to Trash” buttons.
-3. If you downloaded this build from our official GitHub release and trust
+3. If you downloaded this build from our official itch.io page and trust
    its source, click “Done”, not “Move to Trash”.
 4. Open System Settings → Privacy & Security. Scroll down to the notice
    that Z Shelter was blocked, and click “Open Anyway”.
@@ -32,6 +32,6 @@ Apple's opening instructions:
 https://support.apple.com/en-us/102445
 
 Public prototype download:
-https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4
+https://alpacewhite.itch.io/z-shelter
 
 中文说明见同一文件夹中的「START-HERE-Chinese.txt」。

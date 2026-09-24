@@ -2,7 +2,7 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-**[Play on itch.io](https://alpacewhite.itch.io/z-shelter)** · [GitHub download](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4) · [Feedback](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
+**[Play on itch.io](https://alpacewhite.itch.io/z-shelter)** · [Feedback](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
 
 A single-player survival management game about preparing for a zombie outbreak, surviving at home, and living with your choices.
 
@@ -20,7 +20,7 @@ Preparation and survival are playable, with English and Chinese support. I've hi
 
 ## Play
 
-1. Under Assets on the [download page](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4), choose **ZShelter-macOS-v0.2.3-playtest.4.zip**. GitHub's automatic Source code archives contain only these page materials, not a playable game.
+1. Download the macOS playtest from **[itch.io](https://alpacewhite.itch.io/z-shelter)**. The game is free to download; you can optionally contribute there to support development. Thank you for playing and for any support! GitHub does not host playable builds.
 2. Extract the entire ZIP, read **START-HERE-English.txt**, and move **Z Shelter.app** to Applications or another folder before opening it. No Godot installation is needed.
 3. This build is not Apple-notarized. If macOS cannot verify the app, follow the included instructions for **System Settings → Privacy & Security → Open Anyway**.
 4. Choose **Begin a new journal** and try the optional tutorial. Click scene objects to interact, Esc to go back, and F11 for fullscreen.

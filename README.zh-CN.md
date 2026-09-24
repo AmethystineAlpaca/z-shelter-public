@@ -2,7 +2,7 @@
 
 [English](README.md) · **简体中文**
 
-**[在 itch.io 查看与试玩](https://alpacewhite.itch.io/z-shelter)** · [GitHub 备用下载](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4) · [反馈与建议](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
+**[在 itch.io 查看与试玩](https://alpacewhite.itch.io/z-shelter)** · [反馈与建议](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
 
 一款围绕末日前准备、灾后居家求生与选择后果展开的单人生存管理游戏。
 
@@ -20,7 +20,7 @@
 
 ## 开始试玩
 
-1. 在[下载页](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4)的 Assets 中下载 **ZShelter-macOS-v0.2.3-playtest.4.zip**。GitHub 自动生成的 Source code 压缩包只包含本页面资料，不能运行游戏。
+1. 前往 **[itch.io 下载 macOS 试玩版](https://alpacewhite.itch.io/z-shelter)**。试玩可以免费下载，也可以在下载时自愿付费支持开发。感谢你的试玩和支持！GitHub 不再提供游戏安装包。
 2. 完整解压，阅读 **START-HERE-Chinese.txt**，将 **Z Shelter.app** 移到「应用程序」或其他文件夹后打开。无需安装 Godot。
 3. 当前版本尚未经过 Apple 公证。如果 macOS 提示无法验证应用，请按随包说明在「系统设置 → 隐私与安全性」允许打开。
 4. 首页可切换中文，建议开启新手引导。点击场景物件互动，Esc 返回，F11 全屏。

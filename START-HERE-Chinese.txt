@@ -9,7 +9,7 @@ Z Shelter — 请先阅读：如何在 macOS 正确打开
    首次打开可能出现「未打开 Z Shelter」「Apple 无法验证 Z Shelter
    是否包含可能危害 Mac 安全或泄漏隐私的恶意软件」，并显示
    「完成」和「移到废纸篓」两个按钮。
-3. 如果这是从我们的官方 GitHub Release 下载、且你信任来源的版本，
+3. 如果这是从我们的官方 itch.io 页面 下载、且你信任来源的版本，
    请点击「完成」，不要点击「移到废纸篓」。
 4. 打开「系统设置 → 隐私与安全性」，向下找到 Z Shelter 被阻止的提示，
    点击「仍要打开」。
@@ -32,6 +32,6 @@ Apple 官方打开说明：
 https://support.apple.com/zh-cn/102445
 
 公开试玩下载页：
-https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4
+https://alpacewhite.itch.io/z-shelter
 
 English instructions: START-HERE-English.txt in the same folder.
