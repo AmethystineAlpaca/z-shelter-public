@@ -2,7 +2,7 @@
 
 [English](README.md) · **简体中文**
 
-**[下载 macOS 试玩版](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4)** · [反馈与建议](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
+**[在 itch.io 查看与试玩](https://alpacewhite.itch.io/z-shelter)** · [GitHub 备用下载](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4) · [反馈与建议](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
 
 一款围绕末日前准备、灾后居家求生与选择后果展开的单人生存管理游戏。
 

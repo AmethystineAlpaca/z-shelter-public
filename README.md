@@ -2,7 +2,7 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-**[Download the macOS prototype](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4)** · [Feedback](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
+**[Play on itch.io](https://alpacewhite.itch.io/z-shelter)** · [GitHub download](https://github.com/AmethystineAlpaca/z-shelter-public/releases/tag/v0.2.3-playtest.4) · [Feedback](https://github.com/AmethystineAlpaca/z-shelter-public/issues)
 
 A single-player survival management game about preparing for a zombie outbreak, surviving at home, and living with your choices.
 
